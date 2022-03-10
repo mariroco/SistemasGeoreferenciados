@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 3</title>
+</head>
+<body>
+    <p>Haz click en el botón para obtener las coordenadas</p>
+    <br>
+    <button onclick="getLocation()">Obtener coordenadas</button>
+    <p id="mapa"></p>
+    
+    <script>
+        var map = document.getElementById("mapa")
+        function getLocation(){
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(muestraPosicion);
+            }
+        }
+
+        function muestraPosicion(posicion){
+            console.log(posicion)
+            mapa.innerHTML="Latitud: "+posicion.coords.latitude+"<br>"+"Longitud: "+posicion.coords.longitude;
+        }
+    </script>
+</body>
+</html>
