@@ -8,16 +8,20 @@
 </head>
 <body>
 
-    <button onclick="obtieneUbicacion">Obtener ubicación</button>
+    <button onclick="getLocation()">Obtener ubicación</button>
     <div id="mapa">
         <img id="imagenMapa" src="" alt="imagen de mapa">
     </div>
     
+    <p id="alerta"></p>
     <script>
         var map = document.getElementById("mapa")
         function getLocation(){
             if(navigator.geolocation){
                 navigator.geolocation.getCurrentPosition(muestraPosicion);
+            }else{
+                var alerta = document.getElementById("alerta")
+                alerta.innerHTML = "El navegador no dispone de geolocalización";
             }
         }
 
