@@ -42,7 +42,7 @@
             const map= new google.maps.Map(mapa, properties);
             if(navigator.geolocation){
 
-                navigator.location.getCurrentPosition( position =>{
+                navigator.geolocation.getCurrentPosition( position =>{
 
                     let posicion = {
                         lat: position.coords.latitude,
