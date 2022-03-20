@@ -40,7 +40,7 @@
                 url : "./bmo.gif",
                 scaleSize: new google.maps.Size(50,50),
                 origin: new google.maps.Point(0,0),
-                anchor: new google.maps.point(0,0)
+                anchor: new google.maps.Point(0,0)
             }
 
             var marker = new google.maps.Marker({
@@ -50,10 +50,12 @@
             });
 
             if(navigator.geolocation){
-                movePosicion(marker);
+                setInterval( ()=>{
+                    moverPosicion(marker);
+                },5000);
             }
 
-            function movePosicion(marker){
+            function moverPosicion(marker){
                 navigator.geolocation.getCurrentPosition( posicion =>{
                     var pos ={
                         lat: posicion.coords.latitude,
