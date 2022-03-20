@@ -37,9 +37,9 @@
             map = new google.maps.Map(document.getElementById("map"), propiedades)
 
             var icono = {
-                url : "./Pika.webp",
+                url : "./bmo.gif",
                 scaleSize: new google.maps.Size(50,50),
-                origin: new goolge.maps.Point(0,0),
+                origin: new google.maps.Point(0,0),
                 anchor: new google.maps.point(0,0)
             }
 
@@ -48,6 +48,22 @@
                 icon: icono,
                 map: map
             });
+
+            if(navigator.geolocation){
+                movePosicion(marker);
+            }
+
+            function movePosicion(marker){
+                navigator.geolocation.getCurrentPosition( posicion =>{
+                    var pos ={
+                        lat: posicion.coords.latitude,
+                        lng: posicion.coords.longitude
+                    }
+                    marker.setPosition(pos);
+                    map.panTo(pos);
+                    map.setCenter(pos);
+                });
+            }
         }
 
     </script>
