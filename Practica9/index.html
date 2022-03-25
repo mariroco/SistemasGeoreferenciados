@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 9 - Fetch 3</title>
+    <style>
+        #map{
+            width: 100%;
+            height: 100%;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="map" id="map"></div>
+
+    <script>
+        var coordenadas = {
+            lat : 0,
+            lng : 0
+        }
+
+        var propiedades = {
+            center : coordenadas,
+            zoom : 2
+        }
+        function obtieneMarcadores(){
+            const markers = [
+                {
+                    name: "Mexico",
+                    longitude: "-99.1276",
+                    latitude : "19.427"
+                },
+                {
+                    name: "España",
+                    longitude: "-3.70327",
+                    latitude : "40.4157"
+                },
+                {
+                    name: "Brazil",
+                    longitude: "-47.9292",
+                    latitude : "-15.7802"
+                }
+            ];
+            return markers;
+        }
+
+        function iniciaMapa(){
+            const map = new google.maps.Map(document.getElementById("map"),propiedades);
+            const marcadores = obtieneMarcadores();
+            console.log(marcadores);
+
+            for(marcador of marcadores){
+                let marker = new google.maps.Marker({
+                    map : map,
+                    position : new google.maps.LatLng(marcador.latitude, marcador.longitude),
+                    title : marcador.name
+                });
+            }
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMrQgga-C5zCuZLTVk2MPVzX7naqKZXZU&callback=iniciaMapa" async defer></script>   
+</body>
+</html>
