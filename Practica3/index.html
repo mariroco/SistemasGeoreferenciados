@@ -5,11 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practica 3</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <p>Haz click en el botón para obtener las coordenadas</p>
+    <div onclick="getLocation()" class="btn btn-one">
+        <span>Obtener coordenadas</span>
+    </div>
     <br>
-    <button onclick="getLocation()">Obtener coordenadas</button>
     <p id="mapa"></p>
     
     <script>
