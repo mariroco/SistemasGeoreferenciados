@@ -192,11 +192,9 @@
 
                     var icono = {
                         url: "./pin.png",                 
-                        scaledSize: new google.maps.Size(50, 50),  
-                        origin: new google.maps.Point(0,0),  
-                        anchor: new google.maps.Point(0,0) 
+                        scaledSize: new google.maps.Size(50, 50)
                     };
-                    
+
                     map.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
 
                     datos.forEach(marcador => {
