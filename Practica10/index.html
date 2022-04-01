@@ -32,150 +32,148 @@
             zoom: 2
         };
 
-        function iniciaMapa(){
-
-            var propiedades = [
-            {
-            center: coordenadas,
-            zoom: 2
-        },
+        var mystyle = [
                 
-    {
-        "featureType": "all",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "color": "#ffffff"
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "color": "#000000"
-            },
-            {
-                "lightness": 13
-            }
-        ]
-    },
-    {
-        "featureType": "administrative",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#000000"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "color": "#144b53"
-            },
-            {
-                "lightness": 14
-            },
-            {
-                "weight": 1.4
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "all",
-        "stylers": [
-            {
-                "color": "#08304b"
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#0c4152"
-            },
-            {
-                "lightness": 5
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#000000"
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "color": "#0b434f"
-            },
-            {
-                "lightness": 25
-            }
-        ]
-    },
-    {
-        "featureType": "road.arterial",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#000000"
-            }
-        ]
-    },
-    {
-        "featureType": "road.arterial",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "color": "#0b3d51"
-            },
-            {
-                "lightness": 16
-            }
-        ]
-    },
-    {
-        "featureType": "road.local",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#000000"
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "all",
-        "stylers": [
-            {
-                "color": "#146474"
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "all",
-        "stylers": [
-            {
-                "color": "#021019"
-            }
-        ]
-    }
-]
+                {
+                    "featureType": "all",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "color": "#ffffff"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "all",
+                    "elementType": "labels.text.stroke",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        },
+                        {
+                            "lightness": 13
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "color": "#144b53"
+                        },
+                        {
+                            "lightness": 14
+                        },
+                        {
+                            "weight": 1.4
+                        }
+                    ]
+                },
+                {
+                    "featureType": "landscape",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#08304b"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#0c4152"
+                        },
+                        {
+                            "lightness": 5
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "color": "#0b434f"
+                        },
+                        {
+                            "lightness": 25
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "color": "#0b3d51"
+                        },
+                        {
+                            "lightness": 16
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.local",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "transit",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#146474"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#021019"
+                        }
+                    ]
+                }
+            ];
+            
+            
+
+        function iniciaMapa(){
 
 
             fetch("../Practica8/paises.json")
@@ -183,7 +181,14 @@
                 console.log(response);
                 response.json().then(function(datos){
                     console.log(datos)
-                    const map = new google.maps.Map(document.getElementById("map"),propiedades);
+                    const map = new google.maps.Map(document.getElementById("map"), {
+                        mapTypeControlOptions: {
+                            mapTypeIds: ['mystyle', google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.TERRAIN]
+                        },
+                        center: coordenadas,
+                        zoom: 3,
+                        mapTypeId: 'mystyle'
+                    });
                     datos.forEach(marcador => {
                         var informacion = "<strong>País: </strong>"+marcador.CountryName;
                         var infowindow = new google.maps.InfoWindow({
