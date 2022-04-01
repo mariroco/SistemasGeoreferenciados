@@ -33,7 +33,7 @@
 
         function iniciaMapa(){
 
-            fetch("https://sistemasgeo.com/2022/fetch/paises.json",
+            fetch("../Practica8/paises.json",
             {
                 mode:"cors",
                 headers: {
@@ -41,6 +41,7 @@
                 }
             })
             .then( function(response){
+                console.log(response);
                 response.json().then(function(datos){
                     const map = new google.maps.Map(document.getElementById("map"),propiedades);
                     datos.forEach(marcador => {
