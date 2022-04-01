@@ -189,6 +189,9 @@
                         zoom: 3,
                         mapTypeId: 'mystyle'
                     });
+
+                    map.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
+
                     datos.forEach(marcador => {
                         var informacion = "<strong>País: </strong>"+marcador.CountryName;
                         var infowindow = new google.maps.InfoWindow({
