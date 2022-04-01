@@ -22,6 +22,13 @@
     <div id="map"></div>
 
     <script>
+        var icono = {
+            url: "./pin.png",                 
+            scaledSize: new google.maps.Size(50, 50),  
+            origin: new google.maps.Point(0,0),  
+            anchor: new google.maps.Point(0,0) 
+        };
+
         var coordenadas = {
             lat: 0,
             lng: 0
@@ -201,7 +208,8 @@
                         let marker = new google.maps.Marker({
                             map: map,
                             position: new google.maps.LatLng(marcador.CapitalLatitude, marcador.CapitalLongitude),
-                            title: marcador.CountryName
+                            title: marcador.CountryName,
+                            icon: icono
                         });
 
                         marker.addListener('click',function(){
