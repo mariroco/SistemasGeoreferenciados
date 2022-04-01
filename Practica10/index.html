@@ -7,6 +7,7 @@
     <title>Practica 10 - Fetch 4</title>
     <style>
         #map{
+            height: 100%;
             width: 100%;
         }
 
@@ -33,16 +34,11 @@
 
         function iniciaMapa(){
 
-            fetch("../Practica8/paises.json",
-            {
-                mode:"cors",
-                headers: {
-                    "Access-Control-Allow-Origin": "*"
-                }
-            })
+            fetch("../Practica8/paises.json")
             .then( function(response){
                 console.log(response);
                 response.json().then(function(datos){
+                    console.log(datos)
                     const map = new google.maps.Map(document.getElementById("map"),propiedades);
                     datos.forEach(marcador => {
                         var informacion = "<strong>País: </strong>"+marcador.CountryName;
