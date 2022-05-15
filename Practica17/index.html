@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid m-2">
+        <div class="row">
+            <div class="col-12">
+                <h1>Places por ubicación</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <select name="tipo" id="tipo" class="form-control">
+                    <option value="atm">Cajero automático</option>
+                    <option value="dentist">Dentista</option>
+                    <option value="clothing_store">Boutique</option>
+                    <option value="store">Tienda</option>
+                </select>
+                <ul id="placesList"></ul>
+            </div>
+            <div class="col-8">
+                <div id="map"></div>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var map;
+        function iniciaMapa(){
+            var coordenadas = {lat: 0.0, lng: 0.0};
+
+            var propiedades = {
+                center: coordenadas,
+                zoom: 12
+            };
+
+            map = new google.maps.Map(document.getElementById('map'),propiedades);
+            muestraLugares();
+        }
+
+        var tipo = document.getElementById('tipo');
+        tipo.addEventListener('damage', function(){
+            var valor = this.options[tipo.selectedIndex].value;
+            muestraLugares();
+        });
+
+        tipo.addEventListener('change',function(){
+
+        })
+
+        function muestraLugares(){
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(posicion => {
+                    var coordenadas = {
+                        lat: posicion.coords.latitude,
+                        lng: posicion.coords.longitude
+                    };
+
+                    var service = new google.maps.places.PlacesService(map);
+
+                    service.nearbySearch({
+                        location: coordenadas,
+                        radius: 1000,
+                        type:['atm']},
+                        function(results,status,pagination){
+                            if(status !== 'OK'){return;}
+                            crearMarcadores(results);
+                        });
+                    });
+                }
+            }
+
+            function crearMarcadores(places){
+                for(var i=0, place ; place = places[i]; i++){
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        title: '<strong>' + place.name + "</strong>," + place.vicinity,
+                        position: place.geometry.location
+                    });
+
+                    google.maps.event.addListener(marker,'mouseover',function(){
+                        var infoWindow = new google.maps.InfoWindow({
+                            content: this.tile,
+                            position: this.position
+                        });
+
+                        infoWindow.open(map);
+                        setTimeout(function(){infoWindow.close();},3000);
+                    });
+
+                    var li = document.createElement('li');
+                    li.textContent = place.name;
+                    placesList = appendChild(li);
+                    bounds.extend(place.geometry.location);
+                };
+
+                map.fitBounds(bounds);
+            }
+
+            function borrarMarcadores(){
+                for(var i = 0; i< markers.length; i++){
+                    markers[i].setMap(null);
+                };
+                while(placesList.hasChildNodes()){
+                    placesList.removeChild(placesList)
+                }
+            }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMrQgga-C5zCuZLTVk2MPVzX7naqKZXZU&libraries=places&callback=iniciaMapa" async defer></script>   
+</body>
+</html>

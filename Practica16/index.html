@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Options</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        #mapa1,#mapa2,#mapa3,#mapa4,#mapa5, #mapa6, #mapa7{
+            width: 100%;
+            height: 340px;
+            margin: 5;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <h1>Controles de mapa</h1>
+    <div class="container-fluid">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-6">
+                    <div id="mapa1" class="bg-light"></div>
+                    <p class="text-center">Evento click al mapa</p>
+                </div>
+                <div class="col-6">
+                    <div id="mapa2" class="bg-light"></div>
+                    <p class="text-center" >Obtiene nivel del zoom</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div id="mapa3" class="bg-light"></div>
+                    <p class="text-center"></p>
+                </div>
+                <div class="col-6">
+                    <div id="mapa4" class="bg-light"></div>
+                    <p class="text-center" >Colocar marcador y mueve al centro</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div id="mapa5" class="bg-light"></div>
+                    <p class="text-center">Obtiene coordenadas con Mouse map event</p>
+                </div>
+                <div class="col-6">
+                    <div id="mapa6" class="bg-light"></div>
+                    <p class="text-center" >Add dom listener</p>
+                    <button id="btnCerrar" class="btn btn-primary">centrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-dark">
+        <div class="container">
+            <div class="row">
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function iniciaMapa(){
+            var coordenadas = {lat: 0.0, lng: 0.0};
+            var propiedades = {
+                center: coordenadas,
+                zoom: 12
+            };
+
+            var mapa1 = new google.maps.Map(document.getElementById('mapa1'), propiedades);
+            var marker = new google.maps.Marker({
+                position: coordenadas,
+                map: mapa1
+            });
+
+            marker.addListener('click', function(){
+                mapa1.setZoom(9);
+                mapa1.setCenter(marker.getPosition());
+            });
+
+
+
+            var mapa2 = new google.maps.Map(document.getElementById('mapa2'), propiedades);
+            var marker2 = new google.maps.Marker({
+                position: coordenadas,
+                map: mapa2
+            });
+
+            mapa2.addListener('centered_changed', function(){
+                window.setTimeout(function(){
+                    mapa2.panTo(marker2.getPosition());
+                },3000);
+                mapa1.setZoom(9);
+                mapa1.setCenter(marker.getPosition());
+            });
+
+
+
+            var mapa3 = new google.maps.Map(document.getElementById('mapa3'), propiedades);
+            var marker3 = new google.maps.Marker({
+                position: coordenadas,
+                map: mapa3
+            });
+
+            mapa3.addListener('zoom_changed', function(){
+
+                var infoWindow = new google.maps.InfoWindow({
+                    content: 'Cambia el zoom',
+                    position: coordenadas
+                });
+                
+                infoWindow.open(mapa3);
+                nivelZoom = mapa3.getZoom();
+                infoWindow.setContent('Zoom:'+nivelZoom);
+            });
+
+
+
+            var mapa4 = new google.maps.Map(document.getElementById('mapa4'), propiedades);
+            mapa4.addListener('click', function(e){
+                console.log(e.latLng);
+            });
+            function estableceMarcador(latLng){
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: mapa4
+                });
+                mapa4.panTo(latLng);
+            }
+
+
+            var mapa5 = new google.maps.Map(document.getElementById('mapa5'),propiedades);
+            var infowindow = new google.maps.InfoWindow({
+                content : 'Haz click para obtener las coordenadas',
+                position : coordenadas
+            });
+            infowindow.open(mapa5);
+            mapa5.addListener('click', function(evento){
+                infowindow.close();
+                infowindow = new google.maps.InfoWindow({ position: evento.latLng });
+                infowindow.setContent(evento.latLng.toString());
+                infowindow.open(mapa5);
+
+            });
+
+            
+            var mapa6 = new google.maps.Map(document.getElementById('mapa6'),propiedades);
+            google.maps.event.addDomListener(mapa6, 'click', function(){
+                window.alert(' Se hizo click en el mapa');
+            });
+
+            var boton = document.getElementById('btnCentrar');
+            google.maps.event.addDomListener(boton, 'click', function(){
+                mapa6.panTo(coordenadas);
+            });
+            
+            
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMrQgga-C5zCuZLTVk2MPVzX7naqKZXZU&callback=iniciaMapa" async defer></script>   
+</body>
+</html>
