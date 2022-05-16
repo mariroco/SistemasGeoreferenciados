@@ -155,6 +155,11 @@ h3 {
   font-family:  BreeSerif-Regular;
 }
 
+.formLabel {
+  text-align: left;
+  font-size: 2.5vh;
+}
+
 .area{
   background: #000;  
   background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
@@ -309,4 +314,14 @@ h3 {
 body {
   overflow-x: hidden;
 
+}
+
+.customTitle {
+  background-color: #000;
+  color: #fff;
+  width:max-content;
+  padding: 2vh;
+  margin-top: 2vh;
+  border-radius: 2%;
+  font-family: BreeSerif-Regular;
 }
