@@ -501,6 +501,9 @@
         zoom: 3,
         mapTypeId: 'mystyle'
       });
+
+      map.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
+
       const map2 = new google.maps.Map(document.getElementById("map2"), {
         mapTypeControlOptions: {
           mapTypeIds: ['mystyle', google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.TERRAIN]
@@ -509,6 +512,9 @@
         zoom: 3,                
         mapTypeId: 'mystyle'
         });
+
+        map2.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
+
       
     }
 
