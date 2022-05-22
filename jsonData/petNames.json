@@ -1,0 +1,102 @@
+[
+    {
+        "id" : 0,
+        "name" : "Jelly"
+    },
+    {
+        "id" : 1,
+        "name" : "Scruffy"
+    },
+    {
+        "id" : 2,
+        "name" : "Peanut"
+    },
+    {
+        "id" : 3,
+        "name" : "Dots"
+    },
+    {
+        "id" : 4,
+        "name" : "Oreo"
+    },
+    {
+        "id" : 5,
+        "name" : "Twilight"
+    },
+    {
+        "id" : 6,
+        "name" : "Chicken"
+    },
+    {
+        "id" : 7,
+        "name" : "Frufru"
+    },
+    {
+        "id" : 8,
+        "name" : "Firulais"
+    },
+    {
+        "id" : 9,
+        "name" : "Capitan"
+    },
+    {
+        "id" : 10,
+        "name" : "Harry"
+    },
+    {
+        "id" : 11,
+        "name" : "Spots"
+    },
+    {
+        "id" : 12,
+        "name" : "Mittens"
+    },
+    {
+        "id" : 13,
+        "name" : "Whiskers"
+    },
+    {
+        "id" : 14,
+        "name" : "Buddy"
+    },
+    {
+        "id" : 15,
+        "name" : "Pato"
+    },
+    {
+        "id" : 16,
+        "name" : "King"
+    },
+    {
+        "id" : 17,
+        "name" : "Elvis"
+    },
+    {
+        "id" : 18,
+        "name" : "Marshmallow"
+    },
+    {
+        "id" : 19,
+        "name" : "Laika"
+    },
+    {
+        "id" : 20,
+        "name" : "Tortilla"
+    },
+    {
+        "id" : 21,
+        "name" : "Hot Sauce"
+    },
+    {
+        "id" : 22,
+        "name" : "Doggie"
+    },
+    {
+        "id" : 23,
+        "name" : "Pluto"
+    },
+    {
+        "id" : 24,
+        "name" : "Panda"
+    }
+]
