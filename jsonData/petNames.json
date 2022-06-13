@@ -98,5 +98,87 @@
     {
         "id" : 24,
         "name" : "Panda"
-    }
+    },
+    {
+        "id" : 25,
+        "name" : "Your Mamma"
+    },   
+    {
+        "id" : 26,
+        "name" : "Magic"
+    },
+    {
+        "id" : 27,
+        "name" : "Mike"
+    },
+    {
+        "id" : 28,
+        "name" : "Tha Bomb"
+    },
+    {
+        "id" : 29,
+        "name" : "Mr. Bombastic"
+    },
+    {
+        "id" : 30,
+        "name" : "Biggie Cheese"
+    },
+    {
+        "id" : 31,
+        "name" : "Retard"
+    },
+    {
+        "id" : 32,
+        "name" : "Pato"
+    },
+    {
+        "id" : 29,
+        "name" : "Mr. Worldwide"
+    },
+    {
+        "id" : 30,
+        "name" : "Perro"
+    },
+    {
+        "id" : 31,
+        "name" : "Gato"
+    },
+    {
+        "id" : 32,
+        "name" : "Leon"
+    },
+    {
+        "id" : 29,
+        "name" : "Pussycat"
+    },
+    {
+        "id" : 30,
+        "name" : "Gandam Style"
+    },
+    {
+        "id" : 31,
+        "name" : "Juan"
+    },
+    {
+        "id" : 32,
+        "name" : "Ramon el Dragon"
+    },
+    {
+        "id" : 29,
+        "name" : "Mr. Gadget"
+    },
+    {
+        "id" : 30,
+        "name" : "Snoop Doggy Dog"
+    },
+    {
+        "id" : 31,
+        "name" : "Bad Bunny"
+    },
+    {
+        "id" : 32,
+        "name" : "Bizza"
+    },
+
+
 ]

@@ -326,6 +326,23 @@ body {
   font-family: BreeSerif-Regular;
 }
 
+.darkOutlineButton{
+  background-color: white;
+  color: #000;
+  outline: #000;
+  padding: 2vh;
+  text-align: center;
+  font-size:small;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+
+.darkOutlineButton:hover{
+  color: white;
+  background-color: #000;
+  
+}
+
 .roundedButton {
   background-color: #000;
   color: #fff;
@@ -413,4 +430,187 @@ body {
 }
 .site-footer {
   background: orange;
+}
+
+/*SNACKBAR*/
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #333; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+
+/*HORIZONTAL CARD CAROUSEL*/
+.showCase {
+  width: 100%;
+  height: 26vh;
+  display: flex;
+  overflow-x: auto;
+  background-color: lightgrey;
+}
+
+.categoryItem {
+  width: 22vh;
+  flex-shrink: 0;
+  height: 22vh;
+  border-radius: 80px;
+  margin-left: 4vh;
+  background-color: yellow;
+}
+
+/*PAN LEFT AND RIGHT*/
+/*
+.panner {
+  border:1px solid black;
+  display:block;
+  position:fixed;
+  width:50px;
+  height:50px;
+  top:45%;
+}
+
+#showcaseParent {
+  width:6000px;
+}
+.active{
+  color:red;
+}
+#panLeft {
+  left:0px;
+}
+#panRight {
+  right:0px;
+}*/
+
+/*SHOWCASE CARIUSEL*/
+#container{
+  width:100vw;
+  overflow-x:hidden;
+  height: 25vh;
+  position: relative;
+  margin-bottom: 5vh;
+  overflow-y: hidden;
+}
+
+#parent {
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width:max-content;
+  position:absolute;}
+
+.contentBlock{
+  /*font-size:10em;
+  text-align:center;
+  line-height:400px;
+  height:400px;
+  width:500px;
+  margin:10px;
+  border:1px solid black;
+  float:left;*/
+  float: left;
+  width: 25vh;
+  height: 25vh;
+  display: flex;
+align-items: center;
+justify-content: center;
+object-fit: cover;
+  border-radius: 100px;
+  margin-left: 4vh;
+  background-color: black;
+}
+
+.panner {
+  display: inline;
+  position:absolute;  
+  
+}
+
+#panLeft {
+  width: 70px;
+  height: 70px;
+  margin-top: 7vh;
+  left:0px;
+}
+#panRight {
+  width: 70px;
+  height: 70px;
+  margin-top: 7vh;
+  right:0px;
+}
+
+.centered {
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  right: 0;
+}
+
+/*ITEM TEXT*/
+.contentBlockTitle {
+  color: #fff;
+  text-align: center;
+  font-size: 3vh;
+  font-family:  BreeSerif-Regular;
+}
+
+.gigTitle {
+  color: black;
+  text-align: left;
+  font-size:large;
+  font-family:  BreeSerif-Regular;
+}
+
+.i {
+  text-transform: none;
+}
+
+/*HIDE SCROLLBAR*/
+.containerOf {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.containerOf::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
 }
