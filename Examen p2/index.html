@@ -112,7 +112,7 @@
 
     <!----------WEBPAGE CONTENT--------->
     <div class="container-fluid" style="height: 100vh; width: 100%;  margin: 0; padding: 0; ">
-      <a href="#jobs" class="roundedButton button" style="width:40vh;" href="#jobs" onclick="getUserLocation">
+      <a href="#" class="roundedButton button" style="width:40vh;" href="#jobs" onclick="getUserLocation()">
         PRUEBA
     </a>
     <br>
@@ -863,8 +863,6 @@ function getUserLocation(){
 
   showToast("Las coordenadas son: lat -> " + userPosition.lat + ", lng -> " + userPosition.lng);
   getAddressByCoords(userPosition.lat,userPosition.lng);
-
-  return userPosition;
 }
 
 //Get address by coords
