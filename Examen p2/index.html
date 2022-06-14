@@ -819,7 +819,11 @@ function initMaps(){
     postsMap.addListener('click', function(evento){
 
       console.log(evento.latLng.toString());
-      setMarker(postGigsMarker,evento.latLng);
+      var pos = {
+        lat: evento.latLng.lat,
+        lng: evento.latLng.lng
+      }
+      setMarker(postGigsMarker,pos);
       
 
     });
