@@ -813,20 +813,22 @@ function newAccountForm(){
 //==============MAP FUNCTIONS===================================================
 var gigsMap;
 var postsMap;
-var sessionStatus=false; 
+var sessionStatus=true; 
 
+//Initialize maps
 function initMaps(){
-  gigsMap = new google.maps.Map(document.getElementById('gigMapContainer'), {
+
+  gigsMap = new google.maps.Map(document.getElementById("gigMapContainer"), {
         mapTypeControlOptions: {
-          mapTypeIds: ['mystyle', google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.TERRAIN]
-         },
-        center: coordenadas,          
-        zoom: 3,                
+        mapTypeIds: ['mystyle', google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.TERRAIN]
+      },
+        center: coordenadas,
+        zoom: 3,
         mapTypeId: 'mystyle'
-        });
+      });
+  gigsMap.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
   initMap(gigsMap);
   
-   
   if(sessionStatus){
     postsMap =  new google.maps.Map(document.getElementById('postMapContainer'), {
         mapTypeControlOptions: {
@@ -836,10 +838,10 @@ function initMaps(){
         zoom: 3,                
         mapTypeId: 'mystyle'
         });
+    postsMap.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
     initMap(postsMap);
   }
 }
-
 function initMap(map){
  
 
@@ -880,11 +882,6 @@ function setUserLocation(marker,map){
   });
 }
 
-function setPostsMapLocation(marker){
-  postsMap.setCenter(userPosition);
-
-}
-
 //Get address by coords
 function getAddressByCoords(lat, lng) {
     var latlng = new google.maps.LatLng(lat, lng);
@@ -898,6 +895,7 @@ function getAddressByCoords(lat, lng) {
         if (status == google.maps.GeocoderStatus.OK) {
             console.log(results);
             var address = (results[0].formatted_address);
+            $('inputAddress').text = address;
             showToast("La dirección es: " + address);
         }
     });
