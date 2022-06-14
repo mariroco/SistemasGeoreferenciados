@@ -839,13 +839,19 @@ function initMaps(){
         mapTypeId: 'mystyle'
         });
     postsMap.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
-    postsMap.addListener("click", (mapsMouseEvent) => {
-      console.log('hola');
-    /*var position = mapsMouseEvent.latLng;
-    setMarker(marker,position);
-    getAddressByCoords(position.coords.lat,position.coords.lng);
-    */
-   });
+
+    var infowindow = new google.maps.InfoWindow({
+                content : 'Haz click para obtener las coordenadas',
+                position : coordenadas
+            });
+    postsMap.addListener('click', function(evento){
+                infowindow.close();
+                infowindow = new google.maps.InfoWindow({ position: evento.latLng });
+                infowindow.setContent(evento.latLng.toString());
+                infowindow.open(mapa5);
+
+            });
+
     initMap(postsMap);
   }
 }
