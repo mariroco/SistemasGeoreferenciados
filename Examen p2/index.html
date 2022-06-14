@@ -112,6 +112,10 @@
 
     <!----------WEBPAGE CONTENT--------->
     <div class="container-fluid" style="height: 100vh; width: 100%;  margin: 0; padding: 0; ">
+      <a href="#jobs" class="roundedButton button" style="width:40vh;" href="#jobs" onclick="getUserLocation">
+        PRUEBA
+    </a>
+    <br>
       
       <!--HOME SECTION-->
       <div class="row">
@@ -715,9 +719,11 @@
       setTimeout(() => { AOS.init();}, 3000);
     }    
 
+    //Init html
     function showPage() {
       document.getElementById("loader").style.display = "none";
       document.getElementById("myDiv").style.display = "block";
+
     }
     
     $(".navbar li").on("click", function() {       
@@ -838,6 +844,45 @@ function newAccountForm(){
       divAccountForm.innerHTML = ' <div class="row justify-content-center"><div class="col-11 col-lg-5" style="align-items: left; text-align: left;"><h3>Welcome to QuickGigs!</h3><p>Create a new account</p></div></div><div class="row justify-content-center" style="margin-bottom: 10px;"><div class="col-11 col-lg-5 align-items-center"><input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Name"></div></div><div class="row justify-content-center"  style="margin-bottom: 10px;"><div class="col-11 col-lg-5 align-items-center"><input type="mail" class="form-control" id="exampleFormControlInput1" placeholder="Mail"></div></div><div class="row justify-content-center"  style="margin-bottom: 10px;"><div class="col-11 col-lg-5 align-items-center"><input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Password"></div></div><div class="row justify-content-center"><div class="col-11 col-lg-5 align-items-center"><input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Confirm password"></div></div><div class="row justify-content-center" style="height: 20vh;  margin-top: 8vh;"><div class="col-12"><a href="#jobs" class="roundedButton button" style="width:40vh;" href="#jobs">CREATE ACCOUNT</a><br><br>or<br><a id="existingAccount" href="#" onClick="newLoginForm()">Login with existing account</a></div></div>';
 }
 
+
+
+//==============MAP FUNCTIONS===================================================
+
+//Get coords of user location
+function getUserLocation(){
+  var userPosition;
+  navigator.geolocation.getCurrentPosition( position => {
+    userPosition = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
+    marker.setPosition( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
+    map.panTo( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
+    map.setCenter(userPosition);
+  });
+
+  print("Las coordenadas son: lat -> " + userPosition.lat + ", lng -> " + userPosition.lng);
+  getAddressByCoords(userPosition.lat,userPosition.lng);
+  return userPosition;
+}
+
+//Get address by coords
+function getAddressByCoords(lat, lng) {
+    var latlng = new google.maps.LatLng(lat, lng);
+    // This is making the Geocode request
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'latLng': latlng },  (results, status) =>{
+        if (status !== google.maps.GeocoderStatus.OK) {
+            alert(status);
+        }
+        // This is checking to see if the Geoeode Status is OK before proceeding
+        if (status == google.maps.GeocoderStatus.OK) {
+            console.log(results);
+            var address = (results[0].formatted_address);
+            print("La dirección es: " + address);
+        }
+    });
+}
     </script>
      
 </body>
