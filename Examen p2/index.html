@@ -850,20 +850,19 @@ function newAccountForm(){
 
 //Get coords of user location
 function getUserLocation(){
-  var userPosition="";
   navigator.geolocation.getCurrentPosition( position => {
-    userPosition = {
+    var userPosition = {
       lat: position.coords.latitude,
       lng: position.coords.longitude
     };
     console.log(userPosition);
+    getAddressByCoords(userPosition.lat,userPosition.lng);
     //marker.setPosition( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
     //map.panTo( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
     //map.setCenter(userPosition);
   });
 
-  showToast("Las coordenadas son: lat -> " + userPosition.lat + ", lng -> " + userPosition.lng);
-  //getAddressByCoords(userPosition.lat,userPosition.lng);
+  //
 }
 
 //Get address by coords
