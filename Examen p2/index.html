@@ -846,6 +846,7 @@ function initMaps(){
     postsMap.addListener('click', function(evento){
                 infowindow.close();
                 infowindow = new google.maps.InfoWindow({ position: evento.latLng });
+                console.log(evento.latLng);
                 infowindow.setContent(evento.latLng.toString());
                 infowindow.open(postsMap);
 
