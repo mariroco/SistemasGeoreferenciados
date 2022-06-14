@@ -850,7 +850,7 @@ function newAccountForm(){
 
 //Get coords of user location
 function getUserLocation(){
-  var userPosition;
+  var userPosition="";
   navigator.geolocation.getCurrentPosition( position => {
     userPosition = {
       lat: position.coords.latitude,
