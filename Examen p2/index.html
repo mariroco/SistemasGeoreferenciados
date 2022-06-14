@@ -839,6 +839,13 @@ function initMaps(){
         mapTypeId: 'mystyle'
         });
     postsMap.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
+    postsMap.addListener("click", (mapsMouseEvent) => {
+      console.log(mapsMouseEvent.latLng);
+    /*var position = mapsMouseEvent.latLng;
+    setMarker(marker,position);
+    getAddressByCoords(position.coords.lat,position.coords.lng);
+    */
+   });
     initMap(postsMap);
   }
 }
@@ -853,16 +860,32 @@ function initMap(map){
   if(navigator.geolocation){
     setInterval(function(){
       setUserLocation(marker,map);
-    },5000);
+    },10000);
   }else{
     showToast("Your navigator does not support geolocation");
   }
+
 
 }
 
 //Get click coords
 function mapOnClickLocation(){
 
+}
+
+
+//addMarker to map
+function addMarker(lat,lng, map) {
+  var marker = new google.maps.Marker({
+  position: {lat,lng},
+  map: map
+  });
+  markers.push(marker);
+}
+
+//set marker position
+function setMarker(marker,position){
+  marker.setPosition( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
 }
 
 //Get coords of user location
@@ -876,7 +899,7 @@ function setUserLocation(marker,map){
       getAddressByCoords(userPosition.lat,userPosition.lng);
      
     }
-    marker.setPosition( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
+    setMarker(marker,position)
     map.panTo( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
 
   });
