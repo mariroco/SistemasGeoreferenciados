@@ -861,8 +861,9 @@ function getUserLocation(){
     map.setCenter(userPosition);
   });
 
-  print("Las coordenadas son: lat -> " + userPosition.lat + ", lng -> " + userPosition.lng);
+  showToast("Las coordenadas son: lat -> " + userPosition.lat + ", lng -> " + userPosition.lng);
   getAddressByCoords(userPosition.lat,userPosition.lng);
+
   return userPosition;
 }
 
@@ -879,7 +880,7 @@ function getAddressByCoords(lat, lng) {
         if (status == google.maps.GeocoderStatus.OK) {
             console.log(results);
             var address = (results[0].formatted_address);
-            print("La dirección es: " + address);
+            showToast("La dirección es: " + address);
         }
     });
 }
