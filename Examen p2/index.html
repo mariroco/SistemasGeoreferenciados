@@ -895,8 +895,10 @@ function getAddressByCoords(lat, lng) {
         if (status == google.maps.GeocoderStatus.OK) {
             console.log(results);
             var address = (results[0].formatted_address);
-            $('inputAddress').innerHTML = address;
-            showToast("La dirección es: " + address);
+            var addressTextField = document.getElementById("inputAddress");
+            if(addressTextField.value == ""){
+              addressTextField.value = address;
+            }
         }
     });
 }
