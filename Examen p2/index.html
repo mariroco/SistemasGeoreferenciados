@@ -819,11 +819,7 @@ function initMaps(){
     postsMap.addListener('click', function(evento){
 
       console.log(evento.latLng.toString());
-      var pos = {
-        lat: evento.latLng.lat,
-        lng: evento.latLng.lng
-      }
-      setMarker(postGigsMarker,pos);
+      setMarker(postGigsMarker,evento.latLng.lat, evento.latlng.lng);
       
 
     });
@@ -866,8 +862,8 @@ function addMarker(lat,lng, map) {
 }
 
 //set marker position
-function setMarker(marker,position){
-  marker.setPosition( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
+function setMarker(marker,lat,lng){
+  marker.setPosition( new google.maps.LatLng(lat, lng) );
 }
 
 //Get coords of user location
@@ -881,7 +877,7 @@ function setUserLocation(marker,map){
       getAddressByCoords(userPosition.lat,userPosition.lng);
      
     }
-    setMarker(marker,position)
+    setMarker(marker,position.coords.latitude, position.coords.longitude)
     map.panTo( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
 
   });
