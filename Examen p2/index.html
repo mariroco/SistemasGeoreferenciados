@@ -840,7 +840,7 @@ function initMaps(){
         });
     postsMap.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
     postsMap.addListener("click", (mapsMouseEvent) => {
-      console.log(mapsMouseEvent.latLng);
+      console.log('hola');
     /*var position = mapsMouseEvent.latLng;
     setMarker(marker,position);
     getAddressByCoords(position.coords.lat,position.coords.lng);
