@@ -839,7 +839,6 @@ function initMaps(){
         mapTypeId: 'mystyle'
         });
     postsMap.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
-
     var infowindow = new google.maps.InfoWindow({
                 content : 'Haz click para obtener las coordenadas',
                 position : coordenadas
@@ -852,7 +851,7 @@ function initMaps(){
 
             });
 
-    initMap(postsMap);
+    //initMap(postsMap);
   }
 }
 function initMap(map){
