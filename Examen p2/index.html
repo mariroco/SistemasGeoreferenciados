@@ -815,6 +815,7 @@ function initMaps(){
                 content : 'Haz click para obtener las coordenadas',
                 position : coordenadas
             });
+    infowindow.open(postsMap);
     postsMap.addListener('click', function(evento){
       console.log(evento.latLng);
       console.log("ENTRA PERO");
