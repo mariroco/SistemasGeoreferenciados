@@ -856,13 +856,13 @@ function getUserLocation(){
       lat: position.coords.latitude,
       lng: position.coords.longitude
     };
-    marker.setPosition( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
+    //marker.setPosition( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
     map.panTo( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
     map.setCenter(userPosition);
   });
 
   showToast("Las coordenadas son: lat -> " + userPosition.lat + ", lng -> " + userPosition.lng);
-  getAddressByCoords(userPosition.lat,userPosition.lng);
+  //getAddressByCoords(userPosition.lat,userPosition.lng);
 }
 
 //Get address by coords
