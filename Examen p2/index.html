@@ -250,7 +250,6 @@
         </div>
     </div>
     <h3 style="text-align: center; float: center;">or</h3>
-    
 
     <a id="jobs"></a>
       <!--SHOWCASE-->
@@ -324,9 +323,12 @@
           <b class="gigTitle">Gig Title</b>
           <br>
           <p>Gig description, lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
-          <p><i class="fa fa-user " aria-hidden="true"></i> Posted by User</p>
-          <p><i class="fa fa-envelope" aria-hidden="true"></i> mail@example.com</p>
-          <p><i class="fa fa-map-marker" aria-hidden="true"></i> Address</p>
+          
+          <p style="float: left; margin-right: 2vh;"><i class="fa fa-user " aria-hidden="true"></i> Posted by User</p>
+          <p style="float: left;margin-right: 2vh;"><i class="fa fa-envelope" aria-hidden="true"></i>mail@example.com</p>
+
+          <p ><i class="fa fa-phone" aria-hidden="true"></i> xxxxxxxxxx</p>
+          <p onclick="locate(21.15253588313984, -101.71141930668823)"><i class="fa fa-map-marker" aria-hidden="true"></i> Address</p>
         </div>
       </div>
       
@@ -836,6 +838,11 @@ function initMap(map){
 
 }
 
+//LOCATE CARD GIG PIN
+function locate(lat,lng){
+  gigsMap.panTo( new google.maps.LatLng( lat,lng) );
+  gigsMap.setZoom(12);
+}
 
 //Get coords of user location
 function setUserLocation(map){
