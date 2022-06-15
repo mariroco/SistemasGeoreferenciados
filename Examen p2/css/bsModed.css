@@ -105,6 +105,16 @@ justify-content: space-between;
   transform: scale(1.5); 
 }
 
+.hoverColor {
+  transition: transform .2s;
+  margin: 0 auto;
+}
+
+.hoverColor:hover {
+  color: #4e54c8;
+}
+
+
 /*SCROLL BACK TO TOP BTN*/
 #btn-back-to-top {
   position: fixed;
