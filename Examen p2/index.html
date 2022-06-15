@@ -861,7 +861,7 @@ function setUserLocation(map){
       lng: position.coords.longitude
     };
     marker = new google.maps.Marker({position: userPosition, map: map});
-    if(sessionStatus){
+    if(map == postsMap){
       getAddressByCoords(userPosition.lat,userPosition.lng);
       postMarker.push(marker);
     }
