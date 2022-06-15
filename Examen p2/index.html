@@ -857,16 +857,12 @@ function initMap(map){
 
 //Get coords of user location
 function setUserLocation(map){
-  var marker = new google.maps.Marker({
-    position: {lat:0,lng:0},
-    map:map
-  });
   navigator.geolocation.getCurrentPosition( position => {
     var userPosition = {
       lat: position.coords.latitude,
       lng: position.coords.longitude
     };
-    marker.setPosition( new google.maps.LatLng(userPosition.lat, userPosition.lng) );
+    marker = new google.maps.Marker({position: userPosition, map: map});
     if(sessionStatus){
       getAddressByCoords(userPosition.lat,userPosition.lng);
       postMarker.push(marker);
