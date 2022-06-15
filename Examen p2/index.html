@@ -884,9 +884,7 @@ function getAddressByCoords(lat, lng) {
             console.log(results);
             var address = (results[0].formatted_address);
             var addressTextField = document.getElementById("inputAddress");
-            if(addressTextField.value == ""){
-              addressTextField.value = address;
-            }
+            addressTextField.value = address;            
         }
     });
 }
