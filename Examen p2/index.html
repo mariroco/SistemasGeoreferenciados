@@ -822,6 +822,7 @@ function initMaps(){
                 map: postsMap
             });
  
+            getAddressByCoords(event.latLng.lat(), event.latLng.lng());
       marker =  new google.maps.Marker({position: event.latLng, map: postsMap});
       postMarker.push(marker);
 
