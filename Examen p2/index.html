@@ -111,12 +111,7 @@
     
 
     <!----------WEBPAGE CONTENT--------->
-    <div class="container-fluid" style="height: 100vh; width: 100%;  margin: 0; padding: 0; ">
-      <a href="#" class="roundedButton button" style="width:40vh;" href="#jobs" onclick="getUserLocation()">
-        PRUEBA
-    </a>
-    <br>
-      
+    <div class="container-fluid justify-content-center" style="height: 100vh; width: 100%;  margin: 0; padding: 0; ">
       <!--HOME SECTION-->
       <div class="row">
         <a id="home"></a>
@@ -353,78 +348,67 @@
       </div>
 
 
-      <div class="row container-fluid justify-content-center" style="width: 100%; margin: 0; padding: 0; height: fit-content; border: 2px; border-color: black; border-style: groove; border-spacing: 0; background-color: black;" >
-        <div class="container-fluid col-12 col-lg-6" style="padding: 0; margin: 0;  background-color: white;">
-                <form style="padding: 20px;">
-                  <div class="row">
-                    <h3 class="customTitle" style="width:max-content">Gig post</h3>
-                  </div>
-                  <div class="form-row">
-
-                    <div class="form-group">
-                      <div class="row">
-                        <h4 class="formLabel">Contact info</h4>
-                        <div class="col-12">
-                          <input type="name" class="form-control" id="inputName" placeholder="Full Name" style="margin-bottom: 1vh;">
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-6">
-                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                        </div>
-                        <div class="col-6">
-                          <input type="phone" class="form-control" id="inputPhone" placeholder="Phone Number">
-                        </div>
-                      </div>
+      <!--POST GIG FORM-->
+      <form>
+      <div class="row-12 justify-content-center" style="align-items: center; align-content: center; display: flex;">
+        <div class="row container-fluid justify-content-center" style="width: 70vw; margin: 5vh; padding: 0; height: fit-content; border: 2px; border-color: black; border-style: groove; border-spacing: 0; background-color: white;" >
+          <div class="container-fluid col-12 col-lg-6" style="padding: 5vh; margin: 0;  background-color: white;">
+                    <div class="row">
+                      <h3 class="customTitle" style="width:max-content">Gig post</h3>
                     </div>
-                    <br>
-
-                    <div class="form-group">
-                      <div class="row">
-                        <h4 class="formLabel">Gig info</h4>
-                        <div class="col-md-12">
-                          <label for="inputState" style="float: left; margin: 0;">Category</label>
-                          <select id="inputState" class="form-control" style="margin-bottom: 1vh;" aria-placeholder="Gig category">
-                            <option>...</option>
-                          </select>
-                        <div class="col-12">
-                          <textarea class="form-control" placeholder="Gig Description"></textarea>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
-                    <br>
-                      
-                    <div class="form-group">
+                    <div class="form-row" style="padding: 3vh;">
+                      <div class="form-group" >
+                        
                         <div class="row">
-                          <h4 class="formLabel">Gig Address</h4>
-                        </div>
-                        <div class="row">
-                          <div class="col-12">
-                            <input  type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"  style="margin-bottom: 1vh;">
+                          <h4 class="formLabel" style="margin-bottom: 0%;">Contact info</h4>
+                          <div class="col-12 p-2" >
+                            <input type="name" class="form-control" id="inputName"  placeholder="Full name" required>
                           </div>
-                          <div class="col-12">
-                            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                          <div class="col-12 col-lg-6 p-2">
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Mail" required>
+                          </div>
+                          <div class="col-12 col-lg-6 p-2">
+                            <input type="phone" class="form-control" id="inputPhone" placeholder="Phone number" required>
                           </div>
                         </div>
+  
+                        <div class="row" style="margin-top: 2vh;">
+                          <h4 class="formLabel" style="margin-bottom: 0%;">Gig details</h4>
+                          <div class="col-12 col-lg-8 p-2" >                        
+                            <input type="title" class="form-control" id="inputTitle"  placeholder="Gig title" required>
+                          </div>
+                          <div class="col-12 col-lg-4 p-2" > 
+                            <select id="inputCategory" placeholder="Category" class="form-control" style="margin-bottom: 1vh;" aria-placeholder="Gig category">
+                              <option>...</option>
+                            </select>
+                          </div>
+                          <div class="col-12">
+                            <textarea class="form-control" id="gigDescription" placeholder="Gig Description"></textarea>
+                          </div>
+                        </div>
+  
+                        <div class="row" style="margin-top: 2vh;">
+                          <h4 class="formLabel" style="margin-bottom: 0%;">Gig address</h4>
+                          <div class="col-12 p-2" >
+                            <input type="address" class="form-control" id="inputAddress"  placeholder="1234 Main Street" required>
+                          </div>
+                          <div class="col-12 p-2" >
+                            <input type="address" class="form-control" id="inputAddress2"  placeholder="Apartment, studio or floor #">
+                          </div>
+                        </div>
+  
+                      </div>
                     </div>
-                  </div>
-                </form>
-        </div>
-        <div class="container-fluid col-12 col-lg-6" style="color: white; background-color: black; padding: 5vh; margin: 0; height: 100%;">
                     
-                    <div class="map" id="postMapContainer" style="width: 100%; height: 50vh;"></div>
-                    <br>
-                    <h4>Select your location</h4>
-                    <button class="btn btn-primary" style="background-color: white; color: black; margin-top: 2vh;">Get current location</button>
-                    <br>
-
+          </div>
+          <div class="container-fluid col-12 col-lg-6" style="color: white; background-color: black; padding: 5vh; margin: 0; height: 80vh;">
+             <div class="map" id="postMapContainer" style="width: 100%; height: 100%;"></div>
+          </div>
         </div>
       </div>
-
-      <div class="row justify-content-center">
-        <a class="roundedButton button" style="background-color: black; color: white; width: 40vh; margin-top: 5vh; margin-bottom: 10vh;">Post Gig</a>
-      </div>
+        <input class="roundedButton button" type="submit" value="Submit gig" style="background-color: black; color: white; width: 40vh; margin-bottom: 10vh;"/>
+     
+    </form>
 
      
         <!--FOOTER-->
@@ -797,7 +781,7 @@ function initMaps(){
         mapTypeIds: ['mystyle', google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.TERRAIN]
       },
         center: coordenadas,
-        zoom: 3,
+        zoom: 12,
         mapTypeId: 'mystyle'
       });
   gigsMap.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
@@ -810,7 +794,7 @@ function initMaps(){
           mapTypeIds: ['mystyle', google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.TERRAIN]
          },
         center: coordenadas,          
-        zoom: 18,                
+        zoom: 16,                
         mapTypeId: 'mystyle'
         });
     postsMap.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
