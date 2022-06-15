@@ -817,6 +817,7 @@ function initMaps(){
         });
     postsMap.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
     postsMap.addListener('click', function(evento){
+      console.log(evento.latLng.lng());
       setMarker(postGigsMarker,evento.latLng.lat(), evento.latlng.lng());
       
 
