@@ -877,8 +877,8 @@ function addMarker(lat,lng, map) {
 }
 
 //set marker position
-function setMarker(marker,lat,lng){
-  marker.setPosition( new google.maps.LatLng(lat, lng) );
+function setMarker(marker,position){
+  marker.setPosition( new google.maps.LatLng(position.coords.latitude, position.coords.longitude) );
 }
 
 //Get coords of user location
@@ -892,7 +892,7 @@ function setUserLocation(marker,map){
       getAddressByCoords(userPosition.lat,userPosition.lng);
      
     }
-    setMarker(marker,position.coords.latitude, position.coords.longitude)
+    setMarker(marker,position)
     map.panTo( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
 
   });
