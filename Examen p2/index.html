@@ -844,9 +844,7 @@ function DeleteMarkers() {
 
 function initMap(map){
   if(navigator.geolocation){
-    setInterval(function(){
       setUserLocation(map);
-    },10000);
   }else{
     showToast("Your navigator does not support geolocation");
   }
