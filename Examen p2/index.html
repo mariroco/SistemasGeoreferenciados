@@ -818,8 +818,10 @@ function initMaps(){
     postsMap.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
     postsMap.addListener('click', function(evento){
 
-      console.log(evento.latLng.lat.toString());
-      setMarker(postGigsMarker,evento.latLng.latitude, evento.latlng.longitude);
+      console.log(evento.latLng.lat().toString());
+      console.log(evento.latLng.latitude().toString());
+      console.log(evento.latLng.latitude.toString());
+      //setMarker(postGigsMarker,evento.latLng.latitude, evento.latlng.longitude);
       
 
     });
