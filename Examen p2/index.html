@@ -843,16 +843,9 @@ function DeleteMarkers() {
     };
 
 function initMap(map){
- 
-
-  var marker = new google.maps.Marker({
-    position: {lat:0,lng:0},
-    map:map
-  });
-
   if(navigator.geolocation){
     setInterval(function(){
-      setUserLocation(marker,map);
+      setUserLocation(map);
     },10000);
   }else{
     showToast("Your navigator does not support geolocation");
@@ -861,40 +854,23 @@ function initMap(map){
 
 }
 
-//Get click coords
-function mapOnClickLocation(){
-
-}
-
-
-//addMarker to map
-function addMarker(lat,lng, map) {
-  var marker = new google.maps.Marker({
-  position: {lat,lng},
-  map: map
-  });
-  markers.push(marker);
-}
-
-//set marker position
-function setMarker(marker,position){
-  marker.setPosition( new google.maps.LatLng(position.coords.latitude, position.coords.longitude) );
-}
 
 //Get coords of user location
-function setUserLocation(marker,map){
+function setUserLocation(map){
+  var marker = new google.maps.Marker({
+    position: {lat:0,lng:0},
+    map:map
+  });
   navigator.geolocation.getCurrentPosition( position => {
     var userPosition = {
       lat: position.coords.latitude,
       lng: position.coords.longitude
     };
-    marker.setPosition( new google.maps.LatLng(position.coords.latitude, position.coords.longitude) );
-
+    marker.setPosition( new google.maps.LatLng(userPosition.latitude, userPosition.longitude) );
     if(sessionStatus){
       getAddressByCoords(userPosition.lat,userPosition.lng);
-     postMarker.push(marker);
+      postMarker.push(marker);
     }
-    //setMarker(marker,position)
     map.panTo( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
 
   });
