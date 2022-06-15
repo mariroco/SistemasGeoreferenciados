@@ -786,10 +786,8 @@ function newAccountForm(){
 var gigsMap;
 var postsMap;
 var sessionStatus=true; 
-var postGigsMarker = new google.maps.Marker({
-    position: {lat:0,lng:0},
-    map:postsMap
-  });
+var postMarker = [];
+
 
 //Initialize maps
 function initMaps(){
@@ -817,8 +815,15 @@ function initMaps(){
         });
     postsMap.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
     postsMap.addListener('click', function(event){
+      DeleteMarkers();
       console.log(event.latLng.lng());
-      postGigsMarker =  new google.maps.Marker({position: event.latLng, map: postsMap});
+      var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+ 
+      marker =  new google.maps.Marker({position: event.latLng, map: postsMap});
+      postMarker.push(marker);
 
       //setMarker(postGigsMarker,evento.latLng.lat(), evento.latlng.lng());
       
@@ -828,6 +833,15 @@ function initMaps(){
     //initMap(postsMap);
   }
 }
+
+function DeleteMarkers() {
+        //Loop through all the markers and remove
+        for (var i = 0; i < postMarker.length; i++) {
+          postMarker[i].setMap(null);
+        }
+        postMarker = [];
+    };
+
 function initMap(map){
  
 
