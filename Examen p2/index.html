@@ -866,7 +866,7 @@ function setUserLocation(map){
       lat: position.coords.latitude,
       lng: position.coords.longitude
     };
-    marker.setPosition( new google.maps.LatLng(userPosition.latitude, userPosition.longitude) );
+    marker.setPosition( new google.maps.LatLng(userPosition.lat, userPosition.lng) );
     if(sessionStatus){
       getAddressByCoords(userPosition.lat,userPosition.lng);
       postMarker.push(marker);
