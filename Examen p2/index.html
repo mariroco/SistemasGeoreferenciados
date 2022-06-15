@@ -888,11 +888,13 @@ function setUserLocation(marker,map){
       lat: position.coords.latitude,
       lng: position.coords.longitude
     };
+    marker.setPosition( new google.maps.LatLng(position.coords.latitude, position.coords.longitude) );
+
     if(sessionStatus){
       getAddressByCoords(userPosition.lat,userPosition.lng);
-     
+     postMarker.push(marker);
     }
-    setMarker(marker,position)
+    //setMarker(marker,position)
     map.panTo( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
 
   });
