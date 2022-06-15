@@ -819,7 +819,7 @@ function initMaps(){
       console.log(event.latLng.lng());
       var marker = new google.maps.Marker({
                 position: location,
-                map: map
+                map: postsMap
             });
  
       marker =  new google.maps.Marker({position: event.latLng, map: postsMap});
