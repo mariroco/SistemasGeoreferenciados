@@ -624,3 +624,5 @@ object-fit: cover;
 .containerOf::-webkit-scrollbar { 
   display: none;  /* Safari and Chrome */
 }
+
+#fade-it {padding: 15px; text-align: center;}
