@@ -869,9 +869,9 @@ async function getGigs(){
 
                   marker.addListener('click',function(){
                     setTimeout(function(){
-                      var topPos = document.getElementById(id).offsetTop;
+                      var topPos = document.getElementById(gig.id).offsetTop;
                       document.getElementById('gigCardsContainer').scrollTop = topPos-10;
-                      $('#'+id).css("backgroundColor", "#FDFF47");
+                      $('#'+gig.id).css("backgroundColor", "#FDFF47");
                         // some code
                     },1000); 
                    
