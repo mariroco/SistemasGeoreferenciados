@@ -967,7 +967,8 @@ function createGigCard(gig){
 function scrollToElement(id){
   var topPos = document.getElementById(id).offsetTop;
   document.getElementById('gigCardsContainer').scrollTop = topPos-10;
-  topPos.delay(150).animate({
+
+  topPos.animate({
     "background-color": "purple"
   }, 350, function () {
     $("#fade-it").animate({
