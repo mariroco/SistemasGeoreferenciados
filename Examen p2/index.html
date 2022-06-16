@@ -870,19 +870,11 @@ async function getGigs(){
                   marker.addListener('click',function(){
                     var topPos = document.getElementById(gig.id).offsetTop;
                       document.getElementById('gigCardsContainer').scrollTop = topPos-10;
-                      /*$('#'+gig.id).fadeIn();
+                      $('#'+gig.id).fadeIn();
                       $('#'+gig.id).css("backgroundColor", "#deebff");
                     setTimeout(function(){
                       $('#'+gig.id).css("backgroundColor", "white");
-                    },1500); */
-                    $("#"+gig.id).delay(150).animate({
-                      "background-color": "#fc9"
-                    }, 350, function () {
-                      $("#"+gig.id).animate({
-                        "background-color": "#fff"
-                      }, 200);
-                    });
-                   
+                    },1500); 
                     });
 
                   gigsMarkers.push(marker);
