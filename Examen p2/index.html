@@ -870,7 +870,6 @@ async function getGigs(){
                   marker.addListener('click',function(){
                     var topPos = document.getElementById(gig.id).offsetTop;
                       document.getElementById('gigCardsContainer').scrollTop = topPos-10;
-                      $('#'+gig.id).fadeIn();
                       $('#'+gig.id).css("backgroundColor", "#deebff");
                     setTimeout(function(){
                       $('#'+gig.id).css("backgroundColor", "white");
