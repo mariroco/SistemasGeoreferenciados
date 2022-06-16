@@ -758,11 +758,12 @@ function initMaps(){
         mapTypeIds: ['mystyle', google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.TERRAIN]
       },
         center: coordenadas,
-        zoom: 12,
+        zoom: 3,
         mapTypeId: 'mystyle'
       });
   gigsMap.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
   //initMap(gigsMap);
+  setupGigsMarkers();
   
   if(sessionStatus){
     
