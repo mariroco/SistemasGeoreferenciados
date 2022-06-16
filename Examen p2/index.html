@@ -747,7 +747,11 @@ function getCloseMarkers(lat,lng){
   var origin = new google.maps.LatLng(lat, lng);
   gigsList.forEach( gig => {
     var destiny = new google.maps.LatLng(gig.lat, gig.lng);
-    distanceBetweenMarkers(origin,destiny);
+    let distance = distanceBetweenMarkers(origin,destiny);
+    if(distance <= 9999){
+      var marker =  new google.maps.Marker({position: destiny, map: gigsMap});
+      gigsMarkers.push(marker);
+    }
   });
 }
 
