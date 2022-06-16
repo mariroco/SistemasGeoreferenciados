@@ -756,7 +756,7 @@ function getCloseMarkers(lat,lng){
 }
 
 function distanceBetweenMarkers(origin, destiny){
-  console.log(google.maps.geometry.spherical.computeDistanceBetween(origin, destiny));
+  return google.maps.geometry.spherical.computeDistanceBetween(origin, destiny);
 }
 
 //Initialize maps
