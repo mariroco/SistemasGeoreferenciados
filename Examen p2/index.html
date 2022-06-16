@@ -744,6 +744,7 @@ var gigsList = [];
 
 
 function getCloseMarkers(lat,lng){
+  gigsList = [];
   var origin = new google.maps.LatLng(lat, lng);
   gigsList.forEach( gig => {
     var destiny = new google.maps.LatLng(gig.lat, gig.lng);
@@ -751,8 +752,10 @@ function getCloseMarkers(lat,lng){
     if(distance <= 9999){
       var marker =  new google.maps.Marker({position: destiny, map: gigsMap});
       gigsMarkers.push(marker);
+      gigsList.push(gig);
     }
   });
+  showGigs(gigsList);
 }
 
 function distanceBetweenMarkers(origin, destiny){
@@ -773,11 +776,7 @@ function initMaps(){
   gigsMap.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
   gigsMap.addListener('click',function(event){
     DeleteMarkers(gigsMarkers);
-    var marker = new google.maps.Marker({
-                position: coordenadas,
-                map: gigsMap
-            });
-      marker =  new google.maps.Marker({position: event.latLng, map: gigsMap});
+      var marker =  new google.maps.Marker({position: event.latLng, map: gigsMap, icon:{url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}});
       gigsMarkers.push(marker);
       getCloseMarkers(event.latLng.lat(),event.latLng.lng());
 
@@ -798,13 +797,8 @@ function initMaps(){
     postsMap.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
     postsMap.addListener('click', function(event){
       DeleteMarkers(postMarker);
-      var marker = new google.maps.Marker({
-                position: coordenadas,
-                map: postsMap
-            });
- 
       getAddressByCoords(event.latLng.lat(), event.latLng.lng());
-      marker =  new google.maps.Marker({position: event.latLng, map: postsMap});
+      var marker =  new google.maps.Marker({position: event.latLng, map: postsMap, icon:{url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}});
       postMarker.push(marker);
 
       //setMarker(postGigsMarker,evento.latLng.lat(), evento.latlng.lng());
