@@ -743,10 +743,11 @@ var gigsList = [];
 
 function setupGigsMarkers(){
   gigsList.forEach(gig => {
+    console.log(gig);
     var coords = new google.maps.LatLng(gig.lat, gig.lng)
     var marker =  new google.maps.Marker({position: coords, map: gigsMap});
     gigsMarkers.push(marker);
-  })
+  });
 }
 
 
@@ -762,7 +763,7 @@ function initMaps(){
         mapTypeId: 'mystyle'
       });
   gigsMap.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
-  //initMap(gigsMap);
+  initMap(gigsMap);
   setupGigsMarkers();
   
   if(sessionStatus){
@@ -826,8 +827,6 @@ function setUserLocation(map){
     if(map == postsMap){
       getAddressByCoords(userPosition.lat,userPosition.lng);
       postMarker.push(marker);
-    }else{
-      gigsMarkers.push(marker);
     }
     map.panTo( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
 
