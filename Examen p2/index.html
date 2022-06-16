@@ -875,6 +875,7 @@ async function getGigs(){
             response.json().then(function(data){
                 data.forEach(gig => {
                   var newGig = {
+                    id: gig.id,
                     name: gig.name,
                     email: gig.email,
                     phone: gig.phone,
@@ -886,9 +887,14 @@ async function getGigs(){
                     lat: gig.lat,
                     lng: gig.lng
                   };
-                  let marker =  new google.maps.Marker({position: new google.maps.LatLng(gig.lat, gig.lng), map: gigsMap});
-                  gigsMarkers.push(marker);
 
+                  let marker =  new google.maps.Marker({position: new google.maps.LatLng(gig.lat, gig.lng), map: gigsMap});
+
+                  marker.addListener('click',function(){
+                    scrollToElement(gig.id);
+                    });
+
+                  gigsMarkers.push(marker);
                   gigsList.push(newGig);
                 });
                 var markerCluster = new MarkerClusterer(gigsMap,gigsMarkers,{
@@ -969,7 +975,7 @@ function postGig(){
 function createGigCard(gig){
 
   var container = document.getElementById("gigCardsContainer");
-  container.innerHTML += '<div class="row-12 row-lg-3" style="text-align: left; margin-bottom: 2vh; height: fit-content; margin: 3vh; padding: 2vh;">'
+  container.innerHTML += '<div class="row-12 row-lg-3" style="text-align: left; margin-bottom: 2vh; height: fit-content; margin: 3vh; padding: 2vh"; id="'+gig.id+'";>'
   +'<b class="gigTitle">'+gig.title+'</b><br>'
   +'<p>'+gig.description+'</p>'
   +'<p style="float: left; margin-right: 3vh;"><i class="fa fa-user " aria-hidden="true" style="margin-right: 1vh;"></i> Posted by '+gig.name+'</p>'
@@ -981,6 +987,17 @@ function createGigCard(gig){
 
 }
 
+function scrollToElement(id){
+  var topPos = document.getElementById(id).offsetTop;
+  document.getElementById('gigCardsContainer').scrollTop = topPos-10;
+  topPos.delay(150).animate({
+    "background-color": "#cceaff"
+  }, 350, function () {
+    $("#fade-it").animate({
+      "background-color": "#fff"
+    }, 200);
+  });
+}
 function fillCategories(){
   var categoriesList = [];
   $("#categoriesContainer").innerHTML = '';
