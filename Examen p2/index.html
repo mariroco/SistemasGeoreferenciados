@@ -738,9 +738,22 @@ var gigsMap;
 var postsMap;
 var sessionStatus=true; 
 var postMarker = [];
+var gigsMarkers = [];
 
 var gigsList = [];
 
+
+function getCloseMarkers(lat,lng){
+  var origin = new google.maps.LatLng(lat, lng);
+  gigsList.forEach( gig => {
+    var destiny = new google.maps.LatLng(gig.lat, gig.lng);
+    distanceBetweenMarkers(origin,destiny);
+  });
+}
+
+function distanceBetweenMarkers(origin, destiny){
+  console.log(google.maps.geometry.spherical.computeDistanceBetween(origin, destiny));
+}
 
 //Initialize maps
 function initMaps(){
@@ -754,6 +767,18 @@ function initMaps(){
         mapTypeId: 'mystyle'
       });
   gigsMap.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
+  gigsMap.addListener('click',function(event){
+    DeleteMarkers(gigsMarkers);
+    var marker = new google.maps.Marker({
+                position: coordenadas,
+                map: postsMap
+            });
+      marker =  new google.maps.Marker({position: event.latLng, map: postsMap});
+      postMarker.push(marker);
+      getCloseMarkers(event.latLng.lat(),event.latLng.lng());
+
+  });
+  
   initMap(gigsMap);
   
   if(sessionStatus){
@@ -768,7 +793,7 @@ function initMaps(){
         });
     postsMap.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
     postsMap.addListener('click', function(event){
-      DeleteMarkers();
+      DeleteMarkers(postMarker);
       var marker = new google.maps.Marker({
                 position: coordenadas,
                 map: postsMap
@@ -786,12 +811,13 @@ function initMaps(){
   }
 }
 
-function DeleteMarkers() {
+function DeleteMarkers(markers) {
+
         //Loop through all the markers and remove
         for (var i = 0; i < postMarker.length; i++) {
-          postMarker[i].setMap(null);
+          markers[i].setMap(null);
         }
-        postMarker = [];
+        markers = [];
     };
 
 function initMap(map){
@@ -821,6 +847,8 @@ function setUserLocation(map){
     if(map == postsMap){
       getAddressByCoords(userPosition.lat,userPosition.lng);
       postMarker.push(marker);
+    }else{
+      gigsMarkers.push(marker);
     }
     map.panTo( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
 
@@ -848,7 +876,7 @@ function getAddressByCoords(lat, lng) {
 async function getGigs(){
   //get gig objects from dynamo db
   //testGigs = json parse
-  await fetch("/data/gigs.json")
+  await fetch("../Examen%20p2/data/gigs.json")
         .then( function(response){
             response.json().then(function(data){
                 data.forEach(gig => {;
