@@ -774,7 +774,7 @@ function initMaps(){
                 map: gigsMap
             });
       marker =  new google.maps.Marker({position: event.latLng, map: gigsMap});
-      postMarker.push(marker);
+      gigsMarkers.push(marker);
       getCloseMarkers(event.latLng.lat(),event.latLng.lng());
 
   });
