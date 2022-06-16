@@ -393,10 +393,6 @@
 
   
   </div>
-
-  <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
-
   
    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -956,7 +952,7 @@ function postGig(){
 function createGigCard(gig){
 
   var container = document.getElementById("gigCardsContainer");
-  container.innerHTML += '<div class="row-12 row-lg-3" style="text-align: left; margin-bottom: 2vh; height: fit-content; margin: 3vh; padding: 2vh"; id="'+gig.id+'";> <div id="fade-it">'
+  container.innerHTML += '<div class="row-12 row-lg-3" style="text-align: left; margin-bottom: 2vh; height: fit-content; margin: 3vh; padding: 2vh"; id="'+gig.id+'";>'
   +'<b class="gigTitle">'+gig.title+'</b><br>'
   +'<p>'+gig.description+'</p>'
   +'<p style="float: left; margin-right: 3vh;"><i class="fa fa-user " aria-hidden="true" style="margin-right: 1vh;"></i> Posted by '+gig.name+'</p>'
@@ -964,21 +960,15 @@ function createGigCard(gig){
   +'<p><i class="fa fa-phone" aria-hidden="true" style="margin-right: 1vh;"></i>'+gig.phone+'</p>'
   +'<p><i class="fa fa-check" aria-hidden="true" style="margin-right: 1vh;"></i>'+gig.category+'</p>'
   +'<p class="hoverColor" onclick="locate('+gig.lat+','+gig.lng+')"><i class="fa fa-map-marker" aria-hidden="true" style="margin-right: 1vh;"></i> '+gig.address+gig.interior+'</p>'
-  +'</div></div>'
+  +'</div>'
 
 }
 
 function scrollToElement(id){
   var topPos = document.getElementById(id).offsetTop;
   document.getElementById('gigCardsContainer').scrollTop = topPos-10;
-
-  topPos.animate({
-    "background-color": "purple"
-  }, 350, function () {
-    $("#fade-it").animate({
-      "background-color": "#fff"
-    }, 200);
-  });
+  topPos.style.backgroundColor = "#FDFF47";
+  
 }
 
 function fillCategories(){
