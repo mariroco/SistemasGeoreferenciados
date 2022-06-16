@@ -799,7 +799,7 @@ function initMaps(){
                 map: postsMap
             });
  
-            getAddressByCoords(event.latLng.lat(), event.latLng.lng());
+      getAddressByCoords(event.latLng.lat(), event.latLng.lng());
       marker =  new google.maps.Marker({position: event.latLng, map: postsMap});
       postMarker.push(marker);
 
@@ -814,7 +814,7 @@ function initMaps(){
 function DeleteMarkers(markers) {
 
         //Loop through all the markers and remove
-        for (var i = 0; i < postMarker.length; i++) {
+        for (var i = 0; i < markers.length; i++) {
           markers[i].setMap(null);
         }
         markers = [];
