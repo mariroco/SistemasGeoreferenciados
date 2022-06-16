@@ -771,9 +771,9 @@ function initMaps(){
     DeleteMarkers(gigsMarkers);
     var marker = new google.maps.Marker({
                 position: coordenadas,
-                map: postsMap
+                map: gigsMap
             });
-      marker =  new google.maps.Marker({position: event.latLng, map: postsMap});
+      marker =  new google.maps.Marker({position: event.latLng, map: gigsMap});
       postMarker.push(marker);
       getCloseMarkers(event.latLng.lat(),event.latLng.lng());
 
