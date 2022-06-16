@@ -598,7 +598,6 @@
 ];
             
     function myFunction() {
-      //const u = await getGigs();
       getGigs();
       myVar = setTimeout(showPage, 3000);
       setTimeout(() => { AOS.init();}, 3000);
@@ -853,7 +852,6 @@ function getAddressByCoords(lat, lng) {
 }
 
 async function getGigs(){
-  gigsList = [];
   //get gig objects from dynamo db
   //testGigs = json parse
   
@@ -938,6 +936,7 @@ function postGig(){
   console.log(content);
 */
   gigsList.push(gig);
+  gigsList = [];
   getGigs();
   showGigs(gigsList);
   document.getElementById("postGigForm").reset();
