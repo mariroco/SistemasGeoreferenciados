@@ -1,0 +1,113 @@
+[{
+    "name": "Karen Rionda",
+    "email": "karenr@gmail.com",
+    "phone": "1234567890",
+    "title": "Paint wall",
+    "category": "Art",
+    "description": "Custom mural in my home",
+    "address": "Big apple str. #102",
+    "interior": ", 10B",
+    "lat": 40.73884080956524,
+    "lng": -73.98500323208735
+  },
+  {
+    "name": "Fabian Moreno",
+    "email": "fabulosocafe@gmail.com",
+    "phone": "1234567899",
+    "title": "Stealing pizza",
+    "category": "Labor",
+    "description": "Some random crackhead stole from me, so I want revenge by stealing his pizza :)",
+    "address": "New York Alley #123",
+    "interior": "",
+    "lat": 40.751479144746995, 
+    "lng": -73.32014169942289
+  },
+  {
+    "name": "Juan Ramon",
+    "email": "rjuan@gmail.com",
+    "phone": "1234567891",
+    "title": "Need blue corn, FAST",
+    "category": "Food",
+    "description": "SOMEONE PLEASE SELL ME SOME BLUE CORN",
+    "address": "Mexican market, NYC #24",
+    "interior": "",
+    "lat": 40.951838077381275, 
+    "lng": -74.23843318627735
+  }
+  ,
+  {
+    "name": "Silao",
+    "email": "x",
+    "phone": "x",
+    "title": "Silao",
+    "category": "Food",
+    "description": "x",
+    "address": "x",
+    "interior": "",
+    "lat": 22.142835,
+    "lng": -100.961374
+  }
+  ,
+  {
+    "name": "Silao2",
+    "email": "x",
+    "phone": "x",
+    "title": "Silao2",
+    "category": "Crafting",
+    "description": "x",
+    "address": "x",
+    "interior": "",
+    "lat": 22.172413, 
+    "lng": -100.964935
+  }
+  ,
+  {
+    "name": "Silao3",
+    "email": "x",
+    "phone": "x",
+    "title": "Silao3",
+    "category": "Education",
+    "description": "x",
+    "address": "x",
+    "interior": "",
+    "lat": 22.149653,
+    "lng": -100.978192
+  },
+  {
+    "name": "León",
+    "email": "x",
+    "phone": "x",
+    "title": "León",
+    "category": "Electricity",
+    "description": "x",
+    "address": "x",
+    "interior": "",
+    "lat": 21.110291436214695, 
+    "lng": -101.67473647626343
+  },
+  {
+    "name": "León2",
+    "email": "x",
+    "phone": "x",
+    "title": "León2",
+    "category": "Finance",
+    "description": "x",
+    "address": "x",
+    "interior": "",
+    "lat": 21.166910392565537, 
+    "lng": -101.67182967563231
+  }
+  ,
+  {
+    "name": "León",
+    "email": "x",
+    "phone": "x",
+    "title": "León3",
+    "category": "Finance",
+    "description": "x",
+    "address": "x",
+    "interior": "",
+    "lat": 21.128010650711108, 
+    "lng": -101.70180923355943
+  }
+]

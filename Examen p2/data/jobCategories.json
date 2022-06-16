@@ -1,1 +1,17 @@
-[{"name":"All"},{"name":"Crafts"},{"name":"Art"},{"name":"Physical"},{"name":"Food"},{"name":"Electricity"},{"name":"Miscellaneous"}]
+[
+    {"name":"All"},
+    {"name":"Administration"},
+    {"name":"Architecture"},
+    {"name":"Art"},
+    {"name":"Crafting"},
+    {"name":"Education"},
+    {"name":"Electricity"},
+    {"name":"Finance"},
+    {"name":"Food"},
+    {"name":"Labor"},
+    {"name":"Physical"},
+    {"name":"Security"},
+    {"name":"Transportation"},
+    {"name":"Writing"},
+    {"name":"Miscellaneous"}
+]

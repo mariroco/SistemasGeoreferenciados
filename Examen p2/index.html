@@ -112,6 +112,7 @@
 
     <!----------WEBPAGE CONTENT--------->
     <div class="container-fluid justify-content-center" style="height: 100vh; width: 100%;  margin: 0; padding: 0; ">
+      
       <!--HOME SECTION-->
       <div class="row">
         <a id="home"></a>
@@ -258,41 +259,9 @@
       <div class="row justify-content-center" style="margin-top: 5vh;">
 
         <div id="container" style="justify-content: center;">
-          <div id="parent" style="margin-left: 5vh;">
-              <div class="contentBlock zoom" style="background-image: url('assets/imgs/categories/labor.jpg'); background-size: cover;
-              ">
-                <p class="contentBlockTitle">Labor</p>
-              </div>
-              <div class="contentBlock zoom" style="background-image: url('assets/imgs/categories/administration.jpg'); background-size: cover;
-              ">
-                
-                <p class="contentBlockTitle" >Administration</p>
-
-              </div>
-              <div class="contentBlock zoom" style="background-image: url('assets/imgs/categories/education.jpg'); background-size: cover;
-              ">
-                <p class="contentBlockTitle">Education</p>
-              </div>
-              <div class="contentBlock zoom" style="background-image: url('assets/imgs/categories/architecture.jpg'); background-size: cover;
-              ">
-                <p class="contentBlockTitle">Architecture</p>
-              </div>
-              <div class="contentBlock" style="background-image: url('assets/imgs/categories/finances.jpg'); background-size: cover;
-              ">
-                <p class="contentBlockTitle">Finances</p>
-              </div>
-              <div class="contentBlock" style="background-image: url('assets/imgs/categories/writing.jpg'); background-size: cover;
-              ">
-                <p class="contentBlockTitle">Writing</p>
-              </div>
-              <div class="contentBlock" style="background-image: url('assets/imgs/categories/security.jpg'); background-size: cover;
-              ">
-                <p class="contentBlockTitle">Security</p>
-              </div>
-              <div class="contentBlock" style="margin-right: 9vh; background-image: url('assets/imgs/categories/transportation.jpg'); background-size: cover;
-              ">
-                <p class="contentBlockTitle">Transportation</p>
-              </div>
+          <div id="parent"  style="margin-left: 5vh;">
+            <div id="categoriesContainer"></div>
+              
 
           </div>
        
@@ -307,7 +276,7 @@
       </div>
 
       
-      <h2 class="customTitle" style="width: 100vw; margin: 0; text-align: center;">X gigs near you</h2>
+      <h2 id="gigTypeTitle" class="customTitle" style="width: 100vw; margin: 0; text-align: center;">Gigs near you</h2>
 
       <!--MAP-->
       <div class="col-12 col-lg-5" style="margin: 0; padding:0;">
@@ -318,19 +287,6 @@
       <div class="col-12 col-lg-7" style="height: 80vh;padding: 0% ; ">
         <div class="overflow-auto containerOf" id="gigCardsContainer" style="height: 80vh; margin: 0%;
         ">
-        <div class="row-12 row-lg-3" style="text-align: left; margin-bottom: 2vh;
-        height: fit-content; margin: 3vh; padding: 2vh;">
-          <b class="gigTitle">Gig Title</b>
-          <br>
-          <p>Gig description, lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
-          
-          <p style="float: left; margin-right: 3vh;"><i class="fa fa-user " aria-hidden="true" style="margin-right: 1vh;"></i> Posted by User</p>
-          <p style="float: left;margin-right: 3vh;"><i class="fa fa-envelope" aria-hidden="true" style="margin-right: 1vh;"></i>mail@example.com</p>
-          <p ><i class="fa fa-phone" aria-hidden="true" style="margin-right: 1vh;"></i> xxxxxxxxxx</p>
-
-          <p ><i class="fa fa-check" aria-hidden="true" style="margin-right: 1vh;"></i>Category</p>
-          <p onclick="locate(21.15253588313984, -101.71141930668823)"><i class="fa fa-map-marker" aria-hidden="true" style="margin-right: 1vh;"></i> Address</p>
-        </div>
         
       </div>
       
@@ -353,7 +309,7 @@
 
 
       <!--POST GIG FORM-->
-      <form >
+      <form id="postGigForm" onsubmit="postGig()">
       <div class="row-12 justify-content-center" style="align-items: center; align-content: center; display: flex;">
         <div class="row container-fluid justify-content-center" style="width: 70vw; margin: 5vh; padding: 0; height: fit-content; border: 2px; border-color: black; border-style: groove; border-spacing: 0; background-color: white;" >
           <div class="container-fluid col-12 col-lg-6" style="padding: 5vh; margin: 0;  background-color: white;">
@@ -382,7 +338,7 @@
                             <input type="title" class="form-control" id="inputTitle"  placeholder="Gig title" required>
                           </div>
                           <div class="col-12 col-lg-4 p-2" > 
-                            <select id="inputCategory" placeholder="Category" class="form-control" style="margin-bottom: 1vh;" aria-placeholder="Gig category">
+                            <select id="inputCategory" placeholder="Category" class="form-control" style="margin-bottom: 1vh;" aria-placeholder="Gig category" required>
                               <option value="" selected disabled>Category</option>
                             </select>
                           </div>
@@ -410,7 +366,7 @@
           </div>
         </div>
       </div>
-        <input href="#jobs" class="roundedButton button" onclick="postGig()"  type="submit" value="Submit gig" style="background-color: black; color: white; width: 40vh; margin-bottom: 10vh;"/>
+        <input href="#jobs" class="roundedButton button"  type="submit" value="Submit gig" style="background-color: black; color: white; width: 40vh; margin-bottom: 10vh;"/>
      
     </form>
 
@@ -446,6 +402,9 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMrQgga-C5zCuZLTVk2MPVzX7naqKZXZU&callback=initMaps" async defer></script>
     <script>   
   
+  $("#postGigForm").submit(function(e) {
+    e.preventDefault();
+  });
       var coordenadas = {
             lat: 27.1751,
             lng: 78.0421
@@ -639,6 +598,8 @@
 ];
             
     function myFunction() {
+      //const u = await getGigs();
+      getGigs();
       myVar = setTimeout(showPage, 3000);
       setTimeout(() => { AOS.init();}, 3000);
     }    
@@ -647,8 +608,8 @@
     function showPage() {
       document.getElementById("loader").style.display = "none";
       document.getElementById("myDiv").style.display = "block";
-      fillCategorySelect();
-      getGigs();
+      fillCategories();
+      
       showGigs(gigsList);
     }
     
@@ -808,7 +769,6 @@ function initMaps(){
     postsMap.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
     postsMap.addListener('click', function(event){
       DeleteMarkers();
-      console.log(event.latLng.lng());
       var marker = new google.maps.Marker({
                 position: coordenadas,
                 map: postsMap
@@ -878,7 +838,6 @@ function getAddressByCoords(lat, lng) {
         }
         // This is checking to see if the Geoeode Status is OK before proceeding
         if (status == google.maps.GeocoderStatus.OK) {
-            console.log(results);
             var address = (results[0].formatted_address);
             var addressTextField = document.getElementById("inputAddress");
             addressTextField.value = address;            
@@ -886,62 +845,59 @@ function getAddressByCoords(lat, lng) {
     });
 }
 
-function getGigs(){
+async function getGigs(){
   //get gig objects from dynamo db
   //testGigs = json parse
-  gigsList = [{
-    name:' Karen Rionda',
-    email: 'karenr@gmail.com',
-    phone: '1234567890',
-    title: 'Lavar coche',
-    category: 'labor',
-    description: 'Necesito que alguien lave mi coche para hoy por la noche',
-    address: "calle blabla",
-    interior: 'interior',
-    lat: 0,//locationCoords.lat(),
-    lng: 0//locationCoords.lng()
-  },{
-    name:' Michelle Rionda',
-    email: 'michr@gmail.com',
-    phone: '1234567891',
-    title: 'Walk the dog',
-    category: 'labor',
-    description: 'Please walk my dog',
-    address: "calle beep beep",
-    interior: 'interior beep',
-    lat: 0,//locationCoords.lat(),
-    lng: 0//locationCoords.lng()
-  },{
-    name:' Luis Corona',
-    email: 'luisrc@gmail.com',
-    phone: '1234567893',
-    title: 'Help me',
-    category: 'labor',
-    description: 'Want to be a better person, sum1 help',
-    address: "calle guadalajara",
-    interior: 'gdlgdl',
-    lat: 0,//locationCoords.lat(),
-    lng: 0//locationCoords.lng()
-  },]
-  console.log(gigsList);
+  await fetch("/data/gigs.json")
+        .then( function(response){
+            response.json().then(function(data){
+                data.forEach(gig => {;
+                  var newGig = {
+                    name: gig.name,
+                    email: gig.email,
+                    phone: gig.phone,
+                    title: gig.title,
+                    category:gig.category,
+                    description:  gig.description,
+                    address: gig.address,
+                    interior: gig.interior ,
+                    lat: gig.lat,
+                    lng: gig.lng
+                  };
+
+                  gigsList.push(newGig);
+                });
+                
+            })
+        });
 }
 
 function showGigs(list){
+  var container = document.getElementById("gigCardsContainer");
+  container.innerHTML = '';
+  if(list.length == 0 ){
+    container.innerHTML = '<div class="row justify-content-center" style="width:100%; height: 100%; align-items: center;"> No gigs available . . .   :(</div>';
+
+  }
   for(let i=0; i<list.length ; i++){
-    createGigCard(list[i]);
-    console.log(list[i])
+    createGigCard(list[i])
   }
 }
 
 function filterGigsByCategory(category){
   var filteredList = [];
-  for(let i=0; i++; i<gigsList.length){  
-    if (gigsList[i].category == category){
-      filteredList.push(gigsList[i]);
-    }
+  if(category=="All"){
+    filteredList = gigsList;
+    document.getElementById('gigTypeTitle').innerHTML = 'Gigs near you';
+
+  }else{
+    gigsList.forEach(gig => {
+      if(gig.category == category){
+        filteredList.push(gig);
+      }
+    });
+    document.getElementById('gigTypeTitle').innerHTML = category+' gigs near you';
   }
-  var container = document.getElementById("gigCardsContainer");
-  container.innerHTML = "";
   showGigs(filteredList);
 }
 
@@ -959,14 +915,28 @@ function postGig(){
     lat: 0,//locationCoords.lat(),
     lng: 0//locationCoords.lng()
   }
+/*
+  const rawResponse = await fetch('/data/gigs.json', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(gig)
+  });
 
+  const content = await rawResponse.json();
+  console.log(content);
+*/
   gigsList.push(gig);
+  //getGigs();
   showGigs(gigsList);
+  document.getElementById("postGigForm").reset();
 }
+
 
 function createGigCard(gig){
 
-  console.log(gig);
   var container = document.getElementById("gigCardsContainer");
   container.innerHTML += '<div class="row-12 row-lg-3" style="text-align: left; margin-bottom: 2vh; height: fit-content; margin: 3vh; padding: 2vh;">'
   +'<b class="gigTitle">'+gig.title+'</b><br>'
@@ -980,14 +950,16 @@ function createGigCard(gig){
 
 }
 
-function fillCategorySelect(){
+function fillCategories(){
   var categoriesList = [];
+  $("#categoriesContainer").innerHTML = '';
   //Get categories api
   fetch("/data/jobCategories.json")
         .then( function(response){
             response.json().then(function(data){
                 data.forEach(category => {
                   $('#inputCategory').append('<option value="'+category.name+'">'+category.name+'</option>');
+                  createCategoryCircle(category.name);
                 });
                 
             })
@@ -995,6 +967,13 @@ function fillCategorySelect(){
   
 
 
+}
+
+function createCategoryCircle(category){
+  var categoriesContainer = document.getElementById("categoriesContainer");
+  categoriesContainer.innerHTML += '<div class="contentBlock zoom" onclick="filterGigsByCategory('+"'"+category+"'"+') " style="background-image: url('+'assets/imgs/categories/'+category+'.jpg); background-size: cover;">'
+  +'<p class="contentBlockTitle">'+category+'</p>'
+  +'</div>'
 }
   </script>
      
