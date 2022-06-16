@@ -868,12 +868,20 @@ async function getGigs(){
                   let marker =  new google.maps.Marker({position: new google.maps.LatLng(gig.lat, gig.lng), map: gigsMap});
 
                   marker.addListener('click',function(){
-                    setTimeout(function(){
-                      var topPos = document.getElementById(gig.id).offsetTop;
+                    var topPos = document.getElementById(gig.id).offsetTop;
                       document.getElementById('gigCardsContainer').scrollTop = topPos-10;
-                      $('#'+gig.id).css("backgroundColor", "#FDFF47");
-                        // some code
-                    },1000); 
+                      /*$('#'+gig.id).fadeIn();
+                      $('#'+gig.id).css("backgroundColor", "#deebff");
+                    setTimeout(function(){
+                      $('#'+gig.id).css("backgroundColor", "white");
+                    },1500); */
+                    $("#"+gig.id).delay(150).animate({
+                      "background-color": "#fc9"
+                    }, 350, function () {
+                      $("#"+gig.id).animate({
+                        "background-color": "#fff"
+                      }, 200);
+                    });
                    
                     });
 
