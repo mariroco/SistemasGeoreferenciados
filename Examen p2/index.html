@@ -956,7 +956,7 @@ function postGig(){
 function createGigCard(gig){
 
   var container = document.getElementById("gigCardsContainer");
-  container.innerHTML += '<div class="row-12 row-lg-3" style="text-align: left; margin-bottom: 2vh; height: fit-content; margin: 3vh; padding: 2vh"; id="'+gig.id+'";>'
+  container.innerHTML += '<div class="row-12 row-lg-3" style="text-align: left; margin-bottom: 2vh; height: fit-content; margin: 3vh; padding: 2vh"; id="'+gig.id+'";> <div id="fade-it">'
   +'<b class="gigTitle">'+gig.title+'</b><br>'
   +'<p>'+gig.description+'</p>'
   +'<p style="float: left; margin-right: 3vh;"><i class="fa fa-user " aria-hidden="true" style="margin-right: 1vh;"></i> Posted by '+gig.name+'</p>'
@@ -964,7 +964,7 @@ function createGigCard(gig){
   +'<p><i class="fa fa-phone" aria-hidden="true" style="margin-right: 1vh;"></i>'+gig.phone+'</p>'
   +'<p><i class="fa fa-check" aria-hidden="true" style="margin-right: 1vh;"></i>'+gig.category+'</p>'
   +'<p class="hoverColor" onclick="locate('+gig.lat+','+gig.lng+')"><i class="fa fa-map-marker" aria-hidden="true" style="margin-right: 1vh;"></i> '+gig.address+gig.interior+'</p>'
-  +'</div>'
+  +'</div></div>'
 
 }
 
