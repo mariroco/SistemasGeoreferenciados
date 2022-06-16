@@ -868,8 +868,13 @@ async function getGigs(){
                   let marker =  new google.maps.Marker({position: new google.maps.LatLng(gig.lat, gig.lng), map: gigsMap});
 
                   marker.addListener('click',function(){
-                    setInterval(scrollToElement(gig.id), 1000);
-                    
+                    setTimeout(function(){
+                      var topPos = document.getElementById(id).offsetTop;
+                      document.getElementById('gigCardsContainer').scrollTop = topPos-10;
+                      $('#'+id).css("backgroundColor", "#FDFF47");
+                        // some code
+                    },1000); 
+                   
                     });
 
                   gigsMarkers.push(marker);
