@@ -819,8 +819,6 @@ function setUserLocation(map){
 
       getAddressByCoords(userPosition.lat,userPosition.lng);
       postMarker.push(marker);
-    }else{
-      setupGigsMarkers();
     }
     map.panTo( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
 
