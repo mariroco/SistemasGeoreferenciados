@@ -744,11 +744,16 @@ var gigsList = [];
 
 function setupGigsMarkers(){
   gigsList.forEach(gig => {
-    console.log(gig);
     var coords = new google.maps.LatLng(gig.lat, gig.lng)
     var marker =  new google.maps.Marker({position: coords, map: gigsMap});
     gigsMarkers.push(marker);
   });
+
+  var markerCluster = new MarkerClusterer(gigsMap,gigsMarkers,{
+                    imagePath : 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+                    gridSize: 60,
+                    maxZoom: 0
+                })
 /*
   var markerCluster = new MarkerClusterer(gigsMap,gigsMarkers,{
     imagePath : 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
@@ -868,7 +873,7 @@ async function getGigs(){
   await fetch("../Examen%20p2/data/gigs.json")
         .then( function(response){
             response.json().then(function(data){
-                data.forEach(gig => {;
+                data.forEach(gig => {
                   var newGig = {
                     name: gig.name,
                     email: gig.email,
@@ -881,12 +886,20 @@ async function getGigs(){
                     lat: gig.lat,
                     lng: gig.lng
                   };
+                  let marker =  new google.maps.Marker({position: new google.maps.LatLng(gig.lat, gig.lng), map: gigsMap});
+                  gigsMarkers.push(marker);
 
                   gigsList.push(newGig);
                 });
-                
-            })
+                var markerCluster = new MarkerClusterer(gigsMap,gigsMarkers,{
+                  imagePath : 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+                  gridSize: 60,
+                  maxZoom: 0
+                });
+            }).catch(function(error){
+          showToast("There was an error while fetching the data");
         });
+      });
 }
 
 function showGigs(list){
