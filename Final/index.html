@@ -19,25 +19,6 @@
 </head>
 <body onload="myFunction()" style="margin:0; padding: 0;">
   
-  
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body" style="padding: 5vh;">
-        <p style="font-family: BreeSerif-Regular;">Name</p>
-        <input type="name" class="form-control" id="accountModalName"  placeholder="Name" style="margin-bottom: 2vh;" readonly>
-        
-        <p style="font-family: BreeSerif-Regular;">Mail</p>
-        <input type="email" class="form-control" id="accountModalEmail"  placeholder="e-mail"  readonly>
-      </div>
-      <div class="modal-footer">
-        <a href="#" class="button"data-dismiss="modal" style="background-color: gray;">Close</a>
-        <a href="#" class="button" onclick="logOut()">Log out</a>
-      </div>
-    </div>
-  </div>
-</div>
 
   <!--SNACKBAR DIV-->
   <div id="snackbar"></div>  
@@ -64,10 +45,9 @@
           data-aos-duration="700"
           data-aos-easing="ease-in-sine"
           style="width: 9.499999995%">
-         
             <img src="assets/icons/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="" 
-            style="float: left;" ><div style="float: left;">QuickGigs</div>
-         
+            style="float: left;">
+            <div style="float: left;">QuickGigs</div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" 
               style="
               border-style: none; 
@@ -79,17 +59,17 @@
           </a>
         
           <!--LARGE SCREEN USER BUTTON-->
-          <div id="userlg" class="zoom d-lg-none dg-xl-none" style="float:pull-right; margin: 0%; ">
-            <a data-toggle="modal" data-target="#exampleModalLong">
+          <div id="user" class="zoom d-lg-none dg-xl-none" style="float:pull-right; margin: 0%; ">
+            <a href="https://www.youtube.com/">
               <img src="assets/icons/user-circle.svg" width="30" height="30" class="d-inline-block align-top" alt="" 
               style="float: left;">
             </a>
           </div>
 
           <!--NAVBAR ITEMS-->
-          <div class="collapse navbar-collapse" id="navbarNav"  toggle="collapse" data-target=".navbar-collapse">
-            <ul class="navbar-nav" id="navbarItems">
-              <li class="nav-item active" id="homeli">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item  active" id="homeli">
                 <a class="nav-link" href="#home"
                   data-aos="fade-right"
                   data-aos-duration="1000"
@@ -104,29 +84,28 @@
               <li class="nav-item">
                 <a class="nav-link" href="#gigsMap"
                   data-aos="fade-right"
-                  data-aos-duration="1950"
+                  data-aos-duration="1400"
                   data-aos-easing="ease-in-back">Gigs near you</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link"
-                href="#postGig"
                   data-aos="fade-right"
                   id="btn_post_gig"
-                  data-aos-duration="2500"
+                  data-aos-duration="1950"
                   data-aos-easing="ease-in-back">Post a gig</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#faq"
                   data-aos="fade-right"
-                  data-aos-duration="3000"
+                  data-aos-duration="2500"
                   data-aos-easing="ease-in-back">F.A.Q.</a>
               </li>
             </ul>    
           </div>
 
             <!--SMALL SCREEN USER BUTTON-->
-          <div id="usersm" class="zoom d-none d-lg-block d-xl-block" style="float:pull-right; margin: 0%; ">
-            <a data-toggle="modal" data-target="#exampleModalLong">
+          <div id="user" class="zoom d-none d-lg-block d-xl-block" style="float:pull-right; margin: 0%; ">
+            <a href="https://www.youtube.com/">
               <img src="assets/icons/user-circle.svg" width="30" height="30" class="d-inline-block align-top" alt="" 
               style="float: left;">
             </a>
@@ -138,11 +117,14 @@
     
 
     <!----------WEBPAGE CONTENT--------->
-    <div  class="container-fluid justify-content-center" style="height: 100vh; width: 100%;  margin: 0; padding: 0; ">
-      <a id="home"></a>
+    <div class="container-fluid justify-content-center" style="height: 100vh; width: 100%;  margin: 0; padding: 0; ">
 
-      <form id="accountForm" onsubmit="lookupCredentials()">
-        <div class="row">
+      <!--HOME SECTION-->
+      <div class="row">
+        <a id="home"></a>
+        <div class="container-fluid" style="height: fit-content; ">
+          <div class="row">
+          
           <div class="col-12 col-lg-6 area"  style="margin: 0%; padding: 0px;">
             <div class="context" >
               <h1 style="margin-left: 7vh; margin-top: 5vh;"><p class="now">NOW</p> is the time to THRIVE</h1>
@@ -161,203 +143,50 @@
                     <li></li>
             </ul>
           </div >
-          <div class="col-12 col-lg-6 p-0 m-0 justify-content-center " style="align-self: center;" data-aos="fade-right">
-            <a id="login"></a>
 
-            <div class="form-row"  style="height: 100vh; justify-content: center; padding: 3vh;">
-              <div class="form-group" id="currentFormContainer" >
-                <!--
-                <div class="row justify-content-center" style="margin-top: 15vh;">
-                  <div class="row justify-content-center" >
-                    <div class="col-12 col-lg-5 p-2 justify-content-center" >
-                      <h3>Back for more?</h3>
-                      <input type="email" class="form-control" id="inputLoginEmail"  placeholder="e-mail" required>
-                    </div>
-                  </div>
-                  <div class="row justify-content-center" >
-                    <div class="col-12 col-lg-5 p-2 mt-2 justify-content-center">
-                      <input type="password" class="form-control" id="inputLoginPassword" placeholder="Password" required>
-                    </div>
-                  </div>
-                </div>
-                <div class="row justify-content-center" style="margin-top: 5vh;">
-                  <input class="roundedButton button" href="#"  type="submit" value="LOG IN" style="background-color: black; color: white; width: fit-content; margin-bottom: 1vh; padding-left: 3vh; padding-right: 3vh;"/>
-                  </div>
-                <div class="row justify-content-center">
-                  <a id="forgotPassword" href="">I forgot my password :(</a>
-                  <b><p style="margin-top: 7vh;">New to QuickGigs?</p></b>
-                  <a id="newAccount" href="#" onclick="setNewAccountForm()">Create a new account</a>
-                </div>
-              -->
-                <!--div class="row justify-content-center" style="margin-top: 15vh;">
-                  <div class="row justify-content-center" >
-                    <div class="col-12 col-lg-5 p-2 justify-content-center" >
-                      <h3>Create new account</h3>
-                      <input type="email" class="form-control" id="inputLoginEmail"  placeholder="e-mail" required>
-                    </div>
-                  </div>
-                  <div class="row justify-content-center" >
-                    <div class="col-12 col-lg-5 p-2 mt-2 justify-content-center">
-                      <input type="password" class="form-control" id="inputLoginPassword" placeholder="Password" required>
-                    </div>
-                  </div>
-                  <div class="row justify-content-center" >
-                    <div class="col-12 col-lg-5 p-2 mt-2 justify-content-center">
-                      <input type="password" class="form-control" id="inputLoginPassword" placeholder="Confirm password" required>
-                    </div>
-                  </div>
-                </div>
-                <div class="row justify-content-center" style="margin-top: 5vh;">
-                  <input class="roundedButton button" href="#"  type="submit" value="CREATE ACCOUNT" style="background-color: black; color: white; width: fit-content; margin-bottom: 1vh; padding-left: 3vh; padding-right: 3vh;"/>
-                </div>
-                <div class="row justify-content-center">
-                  <b><p style="margin-top: 2vh;">or</p></b>
-                  <a id="newAccount" href="#" onclick="setLoginForm()">Login with an existing account</a>
-                </div-->
+          <div class="col-12 col-lg-6 justify-content-center " style="align-self: center;" data-aos="fade-right">
+            <a id="login"></a>
+            <diV id="accountForm" style="height: 100vh; justify-content: center;padding-top: 20vh;">
+            <div class="row justify-content-center" >
+              <div class="col-11 col-lg-5 align-items-center">
+              <h3>Back for more?</h3>
+            </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-11 col-lg-5 align-items-center">
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="mail">
               </div>
             </div>
-            
+            <br>
+            <div class="row justify-content-center">
+              <div class="col-11 col-lg-5 align-items-center">
+                <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="password">
+              </div>
+            </div>
+
+           
+            <div class="row justify-content-center" style="height: 20vh;  margin-top: 8vh;">
+              <div class="col-12">
+                <a href="#jobs" class="roundedButton button" style="width:40vh;" href="#jobs">
+                  LOG IN
+              </a>
+              <br><br>
+              <a id="forgotPassword" href="">I forgot my password :(</a>
+
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-11 col-lg-5 align-items-center">
+                <b><p>New to QuickGigs?</p></b>
+                <a id="newAccount" href="#" onclick="newAccountForm()">Create a new account</a>
+              </div>
+            </div>
+            </diV>
           </div>
         </div>
-      </form>
-
-      <!--HOME SECTION-->
-      
-
-      <script>
-        container = document.getElementById("currentFormContainer");
-
-        function initQuickGigs(){
-          var container = null;
-          if(sessionStorage.getItem("sesion") == "true"){
-            //Set navbar "My gigs"
-            //show cards with delete alert
-            //show post gig form
-            //show user account section 'name, mail, log out'
-            document.getElementById('navbarItems').innerHTML += '<li class="nav-item" id="mygigsli">'
-              +'<a class="nav-link" href="#mygigs"'
-              +'data-aos="fade-right"'
-              +'data-aos-duration="1000"'
-              +'data-aos-easing="ease-in-back">My Gigs </a>'
-              +'</li>';
-            fillModal();
-            document.getElementById('accountForm').remove();
-            document.getElementById('logintopostgigs').remove();
-          }else{
-            container = document.getElementById("currentFormContainer");
-            setLoginForm();
-            document.getElementById('postGigForm').remove();
-            document.getElementById("userlg").remove();
-            document.getElementById("usersm").remove();
-
-            //
-          }
-        }
-
-        function setLoginForm(){
-          //document.getElementById('accountForm').onsubmit = //lookupCredentials();
-          container.innerHTML = '<div class="row justify-content-center" style="margin-top: 15vh;">'
-            +'<div class="row justify-content-center" >'
-            +'<div class="col-12 col-lg-5 p-2 justify-content-center" >'
-            +'<h3>Back for more?</h3>'
-            +'<input type="email" class="form-control" id="inputLoginEmail"  placeholder="e-mail" required>'
-            +'</div>'
-            +'</div>'
-            +'<div class="row justify-content-center" >'
-            +'<div class="col-12 col-lg-5 p-2 mt-2 justify-content-center">'
-            +'<input type="password" class="form-control" id="inputLoginPassword" placeholder="Password" required>'
-            +'</div>'
-            +'</div>'    
-            +'</div>'
-            +'<div class="row justify-content-center" style="margin-top: 5vh;">'
-            +'<input class="roundedButton button" type="submit" value="LOG IN" style="background-color: black; color: white; width: fit-content; margin-bottom: 1vh; padding-left: 3vh; padding-right: 3vh;"/>'
-            +'</div>'
-            +'<div class="row justify-content-center">'
-            +'<a href="#" id="forgotPassword" onclick="setNewPasswordForm()" >I forgot my password :(</a>'
-            +'<b><p style="margin-top: 7vh;">New to QuickGigs?</p></b>'
-            +'<a href="#" id="newAccount" onclick="setNewAccountForm()">Create a new account</a>'
-            +'</div>';
-        }
-
-        function setNewAccountForm(){
-          document.getElementById('accountForm').onsubmit = showToast('CREAR CUENTA EN API');
-          container.innerHTML = '<div class="row justify-content-center" style="margin-top: 15vh;">'
-            +'<div class="row justify-content-center" >'
-            +'<div class="col-12 col-lg-5 p-2 justify-content-center" >'
-            +'<h3>Create new account</h3>'
-            +'<input type="email" class="form-control" id="inputLoginEmail"  placeholder="e-mail" required>'
-            +'</div>'
-            +'</div>'
-            +'<div class="row justify-content-center" >'
-            +'<div class="col-12 col-lg-5 p-2 mt-2 justify-content-center">'
-            +'<input type="password" class="form-control" id="inputLoginPassword" placeholder="Password" required>'
-            +'</div>'
-            +'</div>'
-            +'<div class="row justify-content-center" >'
-            +'<div class="col-12 col-lg-5 p-2 mt-2 justify-content-center">'
-            +'<input type="password" class="form-control" id="inputLoginPassword" placeholder="Confirm password" required>'
-            +'</div>'
-            +'</div>'
-            +'</div>'
-            +'<div class="row justify-content-center" style="margin-top: 5vh;">'
-            +'<input class="roundedButton button" href="#"  type="submit" value="CREATE ACCOUNT" style="background-color: black; color: white; width: fit-content; margin-bottom: 1vh; padding-left: 3vh; padding-right: 3vh;"/>'
-            +'</div>'
-            +'<div class="row justify-content-center">'
-            +'<b><p style="margin-top: 2vh;">or</p></b>'
-            +'<a id="newAccount" href="#" onclick="setLoginForm()">Login with an existing account</a>'
-            +'</div>'
-        }
-
-        function setNewPasswordForm(){
-          document.getElementById('accountForm').onsubmit = showToast('CAMBIAR CONTRASEÑA API');
-          container.innerHTML = 'This function is currently under development'
-          +'<input class="roundedButton button" href="#"  type="submit" value="CREATE ACCOUNT" onclick="setLoginForm()" style="background-color: black; color: white; width: fit-content; margin-bottom: 1vh; padding-left: 3vh; padding-right: 3vh;"/>'
-
-        }
-
-        function logOut(){
-          sessionStorage.clear()
-          initQuickGigs();
-          location.reload();
-
-        }
-
-        async function lookupCredentials() {
-          var newUser = true;
-          let mail= document.getElementById("inputLoginEmail").value;
-          let pass =  document.getElementById("inputLoginPassword").value;
-          await fetch("data/users.json")
-            .then(function(response){
-              response.json().then(function(data){
-                data.forEach(user => {
-                  if (user.mail == mail && user.password == pass){
-                    sessionStorage.setItem("sesion","true");
-                    sessionStorage.setItem("id", (user.id).toString());
-                    sessionStorage.setItem("name", (user.name).toString());
-                    sessionStorage.setItem("mail", (user.mail).toString());
-                    showToast("Welcome!");
-                  }
-                  return;
-                })
-              }).catch(function(error){
-                  newUser = false;
-                  showToast('There was a problem fetching the users data');
-                })   
-            });
-
-            if(newUser){
-              location.reload();
-            }
-
-            return;
-        }
-      
-        function fillModal(){
-          document.getElementById('accountModalName').value = sessionStorage.getItem('name');
-          document.getElementById('accountModalEmail').value = sessionStorage.getItem('mail');
-
-        }
-      </script>
+        
+        </div>
+      </div>
 
      
       <!--CAROUSEL-->
@@ -476,17 +305,16 @@
 
       <!------POST GIGS FORM SECTION----->
       
-      <div id="logintopostgigs" class="row" style="text-align: center; justify-content: center; width: 100vw; height: 40vh; align-items: center; background-color: black;" >
+      <div class="row" style="text-align: center; justify-content: center; width: 100vw; height: 40vh; align-items: center;" >
         <div>
-        <h3 style="text-align: center; color: white;">Login to start posting gigs!</h3>
+        <h3 style="text-align: center;">Login to start posting gigs!</h3>
         <br>
-        <a class="roundedButton button"  style="background-color: white; color: black; width: 40vh;" href="#login">Login</a>
+        <a class="roundedButton button" style="background-color: black; color: white; width: 40vh;" href="#login">Login</a>
       </div>
 
       </div>
+      <a id="postGigs"></a>
 
-      <div class="row">
-      <a id="postGig"></a>
       <!--POST GIG FORM-->
       <form id="postGigForm" onsubmit="postGig()">
       <div class="row-12 justify-content-center" style="align-items: center; align-content: center; display: flex;">
@@ -557,22 +385,7 @@
       </div>
         <input href="#jobs" class="roundedButton button"  type="submit" value="Submit gig" style="background-color: black; color: white; width: 40vh; margin-bottom: 10vh;"/>
         
-      </form>
-
-      <a id="mygigs"></a>
-      <p style="font-family: BreeSerif-Regular; font-size: 3vh; background-color: black; color: white; padding: 3vh; margin: 0%;">My gigs</p>
-      <div id="myGigsContainer" style="background-color: aqua; width: 100vw; height: 100vh; margin: 0%; padding: 4vh;">
-        <!--
-          -
-          -
-          -
-          MY GIGS CARDS
-          -
-          -
-          -
-        -->
-      </div>      
-    </div>
+    </form>
 
     <script>
     var keywords = [];
@@ -835,7 +648,6 @@
       getGigs();
       myVar = setTimeout(showPage, 3000);
       setTimeout(() => { AOS.init();}, 3000);
-      initQuickGigs();
     }    
 
     //Init html
@@ -957,11 +769,11 @@ function stopScrolling() {
 var divAccountForm = document.getElementById("accountForm");
 function newLoginForm(){
   
-  divAccountForm.innerHTML = '<div class="row justify-content-center"><div class="col-11 col-lg-5 align-items-center"><h3>Back for more?</h3></div></div><div class="row justify-content-center"><div class="col-11 col-lg-5 align-items-center"><input type="email" class="form-control" id="exampleFormControlInput1" placeholder="mail"></div></div><br><div class="row justify-content-center"><div class="col-11 col-lg-5 align-items-center"><input type="password" class="form-control" id="exampleFormControlInput1" placeholder="password"></div></div><div class="row justify-content-center" style="height: 20vh;  margin-top: 8vh;"><div class="col-12"><a href="#jobs" class="roundedButton button" style="width:40vh;" href="#jobs" onclick="lookupCredentials()">LOG IN</a><br><br><a id="forgotPassword" href="">I forgot my password :(</a></div></div><div class="row justify-content-center"><div class="col-11 col-lg-5 align-items-center"><b><p>New to QuickGigs?</p></b><a id="newAccount" href="#" onclick="newAccountForm()">Create a new account</a></div></div>';
+  divAccountForm.innerHTML = '<div class="row justify-content-center"><div class="col-11 col-lg-5 align-items-center"><h3>Back for more?</h3></div></div><div class="row justify-content-center"><div class="col-11 col-lg-5 align-items-center"><input type="email" class="form-control" id="exampleFormControlInput1" placeholder="mail"></div></div><br><div class="row justify-content-center"><div class="col-11 col-lg-5 align-items-center"><input type="password" class="form-control" id="exampleFormControlInput1" placeholder="password"></div></div><div class="row justify-content-center" style="height: 20vh;  margin-top: 8vh;"><div class="col-12"><a href="#jobs" class="roundedButton button" style="width:40vh;" href="#jobs">LOG IN</a><br><br><a id="forgotPassword" href="">I forgot my password :(</a></div></div><div class="row justify-content-center"><div class="col-11 col-lg-5 align-items-center"><b><p>New to QuickGigs?</p></b><a id="newAccount" href="#" onclick="newAccountForm()">Create a new account</a></div></div>';
   
 }
 
-function ShowNewAccountForm(){
+function newAccountForm(){
       divAccountForm.innerHTML = ' <div class="row justify-content-center"><div class="col-11 col-lg-5" style="align-items: left; text-align: left;"><h3>Welcome to QuickGigs!</h3><p>Create a new account</p></div></div><div class="row justify-content-center" style="margin-bottom: 10px;"><div class="col-11 col-lg-5 align-items-center"><input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Name"></div></div><div class="row justify-content-center"  style="margin-bottom: 10px;"><div class="col-11 col-lg-5 align-items-center"><input type="mail" class="form-control" id="exampleFormControlInput1" placeholder="Mail"></div></div><div class="row justify-content-center"  style="margin-bottom: 10px;"><div class="col-11 col-lg-5 align-items-center"><input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Password"></div></div><div class="row justify-content-center"><div class="col-11 col-lg-5 align-items-center"><input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Confirm password"></div></div><div class="row justify-content-center" style="height: 20vh;  margin-top: 8vh;"><div class="col-12"><a href="#jobs" class="roundedButton button" style="width:40vh;" href="#jobs">CREATE ACCOUNT</a><br><br>or<br><a id="existingAccount" href="#" onClick="newLoginForm()">Login with existing account</a></div></div>';
 }
 
@@ -1081,7 +893,6 @@ async function getGigs(){
   //get gig objects from dynamo db
   //testGigs = json parse
   //../Examen%20p2/
-  
   await fetch("data/gigs.json")
         .then( function(response){
             response.json().then(function(data){
@@ -1101,6 +912,7 @@ async function getGigs(){
                     keywords: JSON.parse(gig.keywords)
                   };
 
+                  console.log(gig);
 
                   let marker =  new google.maps.Marker({position: new google.maps.LatLng(gig.lat, gig.lng), map: gigsMap});
 
@@ -1160,6 +972,7 @@ function filterGigsByCategory(category){
 
 function filterGigsByKeywords(){
   var keyword = document.getElementById("searchBar").value
+  console.log(input)
   if( input != ''){
     document.getElementById('gigTypeTitle').innerHTML = '"'+keyword+'" gigs near you';
     var filteredList = [];

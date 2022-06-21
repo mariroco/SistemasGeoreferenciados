@@ -1,0 +1,61 @@
+[
+    {
+        "id":"0",
+        "name":"root",
+        "mail":"root",
+        "password":"root"
+    },{
+        "id":1,
+        "name":"Karen Rionda",
+        "mail":"karenr@gmail.com",
+        "password":"kr123"
+    },
+    {
+        "id":2,
+        "name":"",
+        "mail":"",
+        "password":""
+    },
+    {
+        "id":3,
+        "name":"Juan Ramon",
+        "mail":"rjuan@gmail.com",
+        "password":"jr123"
+    },
+    {
+        "id":4,
+        "name":"Astrid Lugo",
+        "mail":"aslu@gmail.com",
+        "password":"al123"
+    },
+    {
+        "id":5,
+        "name":"Ana Paula C",
+        "mail":"apcm@gmail.com",
+        "password":"apc123"
+    },
+    {
+        "id":6,
+        "name":"Arantxa Huerta",
+        "mail":"aryh@gmail.com",
+        "password":"ah123"
+    },
+    {
+        "id":7,
+        "name":"Ksenia Dosher",
+        "mail":"coolgal@gmail.com",
+        "password":"ks123"
+    },
+    {
+        "id":8,
+        "name":"Gaby Jimenez",
+        "mail":"gjam@gmail.com",
+        "password":"gj123"
+    },
+    {
+        "id":9,
+        "name":"Manuel Montiel",
+        "mail":"manumont@gmail.com",
+        "password":"mm123"
+    }
+]

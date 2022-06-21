@@ -412,7 +412,6 @@ body {
   -webkit-transition-duration: 0.4s; /* Safari */
 }
 
-
 .button:hover {
   transition-duration: 0.1s;
   background-color: #3A3A3A;
