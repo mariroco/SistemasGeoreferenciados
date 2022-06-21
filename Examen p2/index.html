@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,21 +21,25 @@
 </head>
 <body onload="myFunction()" style="margin:0; padding: 0;">
   
-  
+
+
+
+
+
+
+ 
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body" style="padding: 5vh;">
-        <p style="font-family: BreeSerif-Regular;">Name</p>
-        <input type="name" class="form-control" id="accountModalName"  placeholder="Name" style="margin-bottom: 2vh;" readonly>
-        
         <p style="font-family: BreeSerif-Regular;">Mail</p>
         <input type="email" class="form-control" id="accountModalEmail"  placeholder="e-mail"  readonly>
       </div>
       <div class="modal-footer">
         <a href="#" class="button"data-dismiss="modal" style="background-color: gray;">Close</a>
-        <a href="#" class="button" onclick="logOut()">Log out</a>
+        <a class="button" onclick="logout(this)">Log out</a>
       </div>
     </div>
   </div>
@@ -141,7 +147,7 @@
     <div  class="container-fluid justify-content-center" style="height: 100vh; width: 100%;  margin: 0; padding: 0; ">
       <a id="home"></a>
 
-      <form id="accountForm" onsubmit="lookupCredentials()">
+      <div id="accountForm">
         <div class="row">
           <div class="col-12 col-lg-6 area"  style="margin: 0%; padding: 0px;">
             <div class="context" >
@@ -219,11 +225,11 @@
             
           </div>
         </div>
-      </form>
+      </div>
 
       <!--HOME SECTION-->
       
-
+      
       <script>
         container = document.getElementById("currentFormContainer");
 
@@ -256,7 +262,9 @@
 
         function setLoginForm(){
           //document.getElementById('accountForm').onsubmit = //lookupCredentials();
-          container.innerHTML = '<div class="row justify-content-center" style="margin-top: 15vh;">'
+          let values = "document.getElementById('inputLoginEmail').value, document.getElementById('inputLoginPassword').value"
+
+          container.innerHTML = '<form id="loginForm" onsubmit="login(this)" class="row justify-content-center" style="margin-top: 15vh;"><div class="row justify-content-center" style="margin-top: 15vh;">'
             +'<div class="row justify-content-center" >'
             +'<div class="col-12 col-lg-5 p-2 justify-content-center" >'
             +'<h3>Back for more?</h3>'
@@ -270,91 +278,56 @@
             +'</div>'    
             +'</div>'
             +'<div class="row justify-content-center" style="margin-top: 5vh;">'
-            +'<input class="roundedButton button" type="submit" value="LOG IN" style="background-color: black; color: white; width: fit-content; margin-bottom: 1vh; padding-left: 3vh; padding-right: 3vh;"/>'
+            +'<input id="loginButton" class="roundedButton button" type="submit" value="LOG IN" style="background-color: black; color: white; width: fit-content; margin-bottom: 1vh; padding-left: 3vh; padding-right: 3vh;"/>'
             +'</div>'
             +'<div class="row justify-content-center">'
             +'<a href="#" id="forgotPassword" onclick="setNewPasswordForm()" >I forgot my password :(</a>'
             +'<b><p style="margin-top: 7vh;">New to QuickGigs?</p></b>'
             +'<a href="#" id="newAccount" onclick="setNewAccountForm()">Create a new account</a>'
-            +'</div>';
+            +'</div></form>';
+            
         }
 
-        function setNewAccountForm(){
-          document.getElementById('accountForm').onsubmit = showToast('CREAR CUENTA EN API');
-          container.innerHTML = '<div class="row justify-content-center" style="margin-top: 15vh;">'
+        
+        function setNewAccountForm(){          
+          container.innerHTML = '<form id="signupForm" onsubmit="signup(this)" class="row justify-content-center" style="margin-top: 15vh;"><div class="row justify-content-center" style="margin-top: 15vh;">'
             +'<div class="row justify-content-center" >'
             +'<div class="col-12 col-lg-5 p-2 justify-content-center" >'
             +'<h3>Create new account</h3>'
-            +'<input type="email" class="form-control" id="inputLoginEmail"  placeholder="e-mail" required>'
+            +'<input type="email" class="form-control" id="inputNewEmail"  placeholder="e-mail" required>'
             +'</div>'
             +'</div>'
             +'<div class="row justify-content-center" >'
             +'<div class="col-12 col-lg-5 p-2 mt-2 justify-content-center">'
-            +'<input type="password" class="form-control" id="inputLoginPassword" placeholder="Password" required>'
+            +'<input type="password" class="form-control" id="inputNewPassword" placeholder="Password" required>'
             +'</div>'
             +'</div>'
             +'<div class="row justify-content-center" >'
             +'<div class="col-12 col-lg-5 p-2 mt-2 justify-content-center">'
-            +'<input type="password" class="form-control" id="inputLoginPassword" placeholder="Confirm password" required>'
+            +'<input type="password" class="form-control" id="inputNewPassword2" placeholder="Confirm password" required>'
             +'</div>'
             +'</div>'
             +'</div>'
             +'<div class="row justify-content-center" style="margin-top: 5vh;">'
-            +'<input class="roundedButton button" href="#"  type="submit" value="CREATE ACCOUNT" style="background-color: black; color: white; width: fit-content; margin-bottom: 1vh; padding-left: 3vh; padding-right: 3vh;"/>'
+            +'<input class="roundedButton button" href="#" type="submit" value="CREATE ACCOUNT" style="background-color: black; color: white; width: fit-content; margin-bottom: 1vh; padding-left: 3vh; padding-right: 3vh;"/>'
             +'</div>'
             +'<div class="row justify-content-center">'
             +'<b><p style="margin-top: 2vh;">or</p></b>'
             +'<a id="newAccount" href="#" onclick="setLoginForm()">Login with an existing account</a>'
-            +'</div>'
+            +'</div></form>'
         }
 
         function setNewPasswordForm(){
-          document.getElementById('accountForm').onsubmit = showToast('CAMBIAR CONTRASEÑA API');
+          
+          //document.getElementById('accountForm').onsubmit = showToast('CAMBIAR CONTRASEÑA API');
           container.innerHTML = 'This function is currently under development'
           +'<input class="roundedButton button" href="#"  type="submit" value="CREATE ACCOUNT" onclick="setLoginForm()" style="background-color: black; color: white; width: fit-content; margin-bottom: 1vh; padding-left: 3vh; padding-right: 3vh;"/>'
 
         }
 
-        function logOut(){
-          sessionStorage.clear()
-          initQuickGigs();
-          location.reload();
-
-        }
-
-        async function lookupCredentials() {
-          var newUser = true;
-          let mail= document.getElementById("inputLoginEmail").value;
-          let pass =  document.getElementById("inputLoginPassword").value;
-          await fetch("data/users.json")
-            .then(function(response){
-              response.json().then(function(data){
-                data.forEach(user => {
-                  if (user.mail == mail && user.password == pass){
-                    sessionStorage.setItem("sesion","true");
-                    sessionStorage.setItem("id", (user.id).toString());
-                    sessionStorage.setItem("name", (user.name).toString());
-                    sessionStorage.setItem("mail", (user.mail).toString());
-                    showToast("Welcome!");
-                  }
-                  return;
-                })
-              }).catch(function(error){
-                  newUser = false;
-                  showToast('There was a problem fetching the users data');
-                })   
-            });
-
-            if(newUser){
-              location.reload();
-            }
-
-            return;
-        }
-      
         function fillModal(){
-          document.getElementById('accountModalName').value = sessionStorage.getItem('name');
-          document.getElementById('accountModalEmail').value = sessionStorage.getItem('mail');
+          document.getElementById('accountModalEmail').value = sessionStorage.getItem('email');
+          document.getElementById('inputEmail').value = sessionStorage.getItem('email');
 
         }
       </script>
@@ -1276,6 +1249,53 @@ function createCategoryCircle(category){
   +'</div>'
 }
   </script>
+
+
      
+
+
+
+
+   <!-- SDK FIREBASE -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
+  <!-- Don't change the format for any other products. -->
+  <!-- etc. -->
+
+
+  <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+    apiKey: "AIzaSyDfNJ9UgWHEbzC1LmQ2WKhfWLzDA_Rh1-Y",
+    authDomain: "quickgigs-bc382.firebaseapp.com",
+    projectId: "quickgigs-bc382",
+    storageBucket: "quickgigs-bc382.appspot.com",
+    messagingSenderId: "1043775452520",
+    appId: "1:1043775452520:web:3ac50cdea0ac463e7592dd"
+  };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const fs = firebase.firestore();
+  </script>
+
+<script src="main.js"></script>
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
